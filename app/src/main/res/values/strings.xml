@@ -1,3 +1,39 @@
 <resources>
-    <string name="app_name">JavaAintShit</string>
+    //gena
+    <string name="app_name">ชื่อแอปของคุณ</string>
+    <string name="app_logo">โลโก้แอปพลิเคชัน</string>
+
+    //log/re
+    <string name="login_title">ลงทะเบียน / เข้าสู่ระบบ</string>
+    <string name="email_hint">อีเมล</string>
+    <string name="password_hint">รหัสผ่าน</string>
+    <string name="sign_in_button">ลงชื่อเข้าใช้</string>
+    <string name="sign_up_button">สร้างบัญชี</string>
+
+    //huh?
+    <string name="welcome_text">ยินดีต้อนรับสู่\nBurnout Self-Check</string>
+    <string name="start">เริ่มต้น</string>
+
+    //register
+    <string name="register_title">ลงทะเบียนผู้ใช้งานใหม่</string>
+    <string name="name_hint">ชื่อ</string>
+    <string name="age_hint">อายุ</string>
+    <string name="year_unit">ปี</string>
+    <string name="gender">เพศ</string>
+    <string name="male">ชาย</string>
+    <string name="female">หญิง</string>
+    <string name="other_gender">อื่นๆ</string>
+    <string name="sleep_time">เวลานอนเฉลี่ย</string>
+    <string name="sleep_1_3">1-3 ชม.</string>
+    <string name="sleep_4_6">4-6 ชม.</string>
+    <string name="sleep_8_10">8-10 ชม.</string>
+    <string name="sleep_over_12">&gt;12 ชม.</string>
+    <string name="exercise">ออกกำลังกาย</string>
+    <string name="exercise_0">0 ครั้ง/สัปดาห์</string>
+    <string name="exercise_1_2">1-2 ครั้ง/สัปดาห์</string>
+    <string name="exercise_3_4">3-4 ครั้ง/สัปดาห์</string>
+    <string name="exercise_more">&gt;4 ครั้ง/สัปดาห์</string>
+    <string name="stress_level">ระดับความเครียด</string>
+    <string name="create_account_button">สร้างบัญชี</string>
+    <string name="already_have_account">มีบัญชีแล้ว? เข้าสู่ระบบ</string>
 </resources>
