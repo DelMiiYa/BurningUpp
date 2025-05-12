@@ -1,20 +1,20 @@
 <resources>
-    //gena
+    //Common
     <string name="app_name">ชื่อแอปของคุณ</string>
     <string name="app_logo">โลโก้แอปพลิเคชัน</string>
 
-    //log/re
+    //Login
     <string name="login_title">ลงทะเบียน / เข้าสู่ระบบ</string>
     <string name="email_hint">อีเมล</string>
     <string name="password_hint">รหัสผ่าน</string>
     <string name="sign_in_button">ลงชื่อเข้าใช้</string>
     <string name="sign_up_button">สร้างบัญชี</string>
 
-    //huh?
+    //Welcome
     <string name="welcome_text">ยินดีต้อนรับสู่\nBurnout Self-Check</string>
     <string name="start">เริ่มต้น</string>
 
-    //register
+    //Register
     <string name="register_title">ลงทะเบียนผู้ใช้งานใหม่</string>
     <string name="name_hint">ชื่อ</string>
     <string name="age_hint">อายุ</string>
@@ -36,4 +36,10 @@
     <string name="stress_level">ระดับความเครียด</string>
     <string name="create_account_button">สร้างบัญชี</string>
     <string name="already_have_account">มีบัญชีแล้ว? เข้าสู่ระบบ</string>
+    
+    // MainMenu
+    <string name="menu_label">เมนูหลัก</string>
+    <string name="burnout_level_test_button">แบบทดสอบ</string>
+    <string name="mood_tracker_add_button">บันทึกอารมณ์</string>
+    <string name="mood_calendar_button">ปฏิทินอารมณ์</string>
 </resources>

@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText editTextEmail;
     private EditText editTextPassword;
@@ -34,11 +34,11 @@ public class Login extends AppCompatActivity {
                 String password = editTextPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    Toast.makeText(Login.this, "กรุณากรอกอีเมลและรหัสผ่าน", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "กรุณากรอกอีเมลและรหัสผ่าน", Toast.LENGTH_SHORT).show();
                 } else {
                     // go go Menu
-                    //Intent intent = new Intent(Login.this, MenuActivity.class);
-                    //startActivity(intent);
+                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // go go Register
-                Intent intent = new Intent(Login.this, RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
