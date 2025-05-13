@@ -2,7 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FFFF0000</color>
+    <color name="orange">#FFFF5a00</color>
     <color name="havelockblue">#55a4da</color>
     <color name="hawkesblue">#D6ECFB</color>
     <color name="MediumBlue">#0000CD</color>
+    <color name="metallicBlue">#294977</color>
 </resources>

@@ -36,10 +36,23 @@
     <string name="stress_level">ระดับความเครียด</string>
     <string name="create_account_button">สร้างบัญชี</string>
     <string name="already_have_account">มีบัญชีแล้ว? เข้าสู่ระบบ</string>
-    
+
     // MainMenu
     <string name="menu_label">เมนูหลัก</string>
     <string name="burnout_level_test_button">แบบทดสอบ</string>
     <string name="mood_tracker_add_button">บันทึกอารมณ์</string>
     <string name="mood_calendar_button">ปฏิทินอารมณ์</string>
+    <string name="profile_button">ปุ่มโปรไฟล์</string>
+    <string name="moodtracklabel">ติดตามอารมณ์</string>
+    <string name="moodtracker_datelabel">วันที่</string>
+    <string name="moodtracker_choosedate">เลือกวันที่</string>
+    <string name="moodtracker_mood">อารมณ์</string>
+    <string name="moodtracker_verybad">แย่มาก</string>
+    <string name="moodtracker_bad">แย่</string>
+    <string name="moodtracker_normal">เฉยๆ</string>
+    <string name="moodtracker_good">ดี</string>
+    <string name="moodtracker_verygood">ดีมาก</string>
+    <string name="moodtracker_activitylabel">กิจกรรม</string>
+    <string name="moodtracker_activitywrite">พิมพ์กิจกรรมที่ทำวันนี้</string>
+    <string name="moodtracker_notes">บันทึกช่วยจำ</string>
 </resources>

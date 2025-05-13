@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6F3FF"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Mood Icon -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp" />
+            <!-- android:src="@drawable/ic_smile_large" -->
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/moodtracklabel"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#0D2A56"
+            android:layout_marginTop="12dp" />
+
+        <!-- Date Row -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/moodtracker_datelabel"
+            android:textColor="#0D2A56"
+            android:layout_marginTop="24dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/date_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounded_white"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:focusable="true"
+            android:clickable="true"
+            android:text="@string/moodtracker_choosedate" />
+
+        <!-- Mood Selection -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/moodtracker_mood"
+            android:textColor="#0D2A56"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/mood_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:weightSum="5">
+
+            <ImageButton android:id="@+id/mood_1" android:layout_width="0dp" android:layout_height="50dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/moodtracker_verybad"
+                android:src="@drawable/ic_mood1" android:padding="4dp"
+                android:background="@null"
+                android:scaleType="fitCenter"/>
+            <ImageButton android:id="@+id/mood_2" android:layout_width="0dp" android:layout_height="50dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/moodtracker_bad"
+                android:src="@drawable/ic_mood2" android:padding="4dp"
+                android:background="@null"
+                android:scaleType="fitCenter"/>
+            <ImageButton android:id="@+id/mood_3" android:layout_width="0dp" android:layout_height="50dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/moodtracker_normal"
+                android:src="@drawable/ic_mood3" android:padding="4dp"
+                android:background="@null"
+                android:scaleType="fitCenter"/>
+            <ImageButton android:id="@+id/mood_4" android:layout_width="0dp" android:layout_height="50dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/moodtracker_good"
+                android:src="@drawable/ic_mood4" android:padding="4dp"
+                android:background="@null"
+                android:scaleType="fitCenter"/>
+            <ImageButton android:id="@+id/mood_5" android:layout_width="0dp" android:layout_height="50dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/moodtracker_verygood"
+                android:src="@drawable/ic_mood5" android:padding="4dp"
+                android:background="@null"
+                android:scaleType="fitCenter"/>
+        </LinearLayout>
+
+        <!-- Activities (Replaced with EditText) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/moodtracker_activitylabel"
+            android:textColor="#0D2A56"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/activity_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/moodtracker_activitywrite"
+            android:background="@drawable/bg_rounded_white"
+            android:padding="12dp"
+            android:inputType="text" />
+
+        <!-- Notes -->
+        <EditText
+            android:id="@+id/note_input"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="@string/moodtracker_notes"
+            android:background="@drawable/bg_rounded_white"
+            android:gravity="top|start"
+            android:padding="12dp"
+            android:layout_marginTop="20dp" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="บันทึก"
+            android:backgroundTint="#3399FF"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+</ScrollView>
