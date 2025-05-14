@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".assessment2">
+
+    <View
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/mainblue"
+        android:foregroundTint="@color/white"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/toptextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="@string/assmentp2"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/topbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/topbar"
+        app:layout_constraintTop_toTopOf="@+id/topbar"
+        tools:ignore="TextContrastCheck" />
+    <Button
+        android:id="@+id/btnbacktomenuicon"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="63dp"
+        android:layout_height="74dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/backtomenu"
+        android:shadowColor="@color/white"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/white"
+        android:textColorLink="@color/white"
+        app:icon="@drawable/btnbackicon"
+        app:iconGravity="textTop"
+        app:iconSize="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/white"
+        app:strokeColor="@color/white" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyviewforass2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:contentDescription="@string/reVass2"
+        app:layout_constraintBottom_toTopOf="@+id/btnsubmit"
+        app:layout_constraintTop_toBottomOf="@+id/topbar"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:id="@+id/btnsubmit"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/mainblue"
+        android:text="@string/submitbtn"
+        android:textAlignment="center"
+        android:textColorLink="@color/white"
+        android:textScaleX="1.15"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

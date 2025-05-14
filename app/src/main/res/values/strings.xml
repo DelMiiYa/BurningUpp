@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">JavaAintShit</string>
+    <string name="page1_name">pre_assment</string>
+    <string name="testText1">testTextOwO</string>
+    <string name="testbtn">BtnOwO</string>
+    <string name="assmentp1">ทำแบบทดสอบ</string>
+    <string name="assmentp2">แบบทดสอบที่ 1 :</string>
+    <string name="assmentp3">ประเมิน Burnout</string>
+    <string name="backtomenu">ย้อนกลับ</string>
+    <string name="reVass1">recycleViewfor assment1</string>
+    <string name="reVass2">recycleViewfor assment2</string>
+    <string name="yesbtn">ใช่</string>
+    <string name="nobtn">ไม่ใช่</string>
+    <string name="submitbtn">ส่งแบบทดสอบ</string>
+    <string name="preasspage">เลือกแบบทดสอบ</string>
+    <integer name="choice1">1</integer>
+    <integer name="choice2">2</integer>
+    <integer name="choice3">3</integer>
+    <integer name="choice4">4</integer>
+    <integer name="choice5">5</integer>
+
+
 </resources>

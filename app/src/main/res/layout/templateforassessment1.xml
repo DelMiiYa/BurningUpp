@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/assment111"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/design_default_color_on_secondary" />
+
+        <TextView
+            android:id="@+id/assmenttext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/yesnobtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/white"
+            android:baselineAligned="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:textAlignment="center"
+            android:visibility="visible"
+            app:cornerRadius="20dp">
+
+            <RadioButton
+                android:id="@+id/btnyes"
+                style="@style/Widget.Material3.CompoundButton.RadioButton"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@color/palerblue"
+                android:fontFamily="@font/abeezee"
+                android:gravity="center"
+                android:layerType="none"
+                android:text="@string/yesbtn"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:cornerRadius="20dp" />
+
+            <RadioButton
+                android:id="@+id/btnno"
+                style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@color/palerblue"
+                android:fontFamily="@font/abeezee"
+                android:text="@string/nobtn"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:cornerRadius="20dp" />
+        </RadioGroup>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
