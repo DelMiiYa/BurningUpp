@@ -11,8 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class pre_assessment1 extends AppCompatActivity {
-    private Button btn_to_assment1 ,btnback1,btnback2;
+public class BurnoutTestActivity extends AppCompatActivity {
+    private Button btn_tobasictest,btnback1,btnback2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +24,15 @@ public class pre_assessment1 extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        this.btn_to_assment1 = findViewById(R.id.btnassment1);
+        this.btn_tobasictest = findViewById(R.id.btnassment1);
         this.btnback1 = findViewById(R.id.btnbacktomenu);
         this.btnback2 = findViewById(R.id.btnbacktomenuicon);
 
-        this.btn_to_assment1.setOnClickListener(new View.OnClickListener() {
+        this.btn_tobasictest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //เปิดหน้า assesment1
-                Intent intent2 = new Intent(getApplicationContext(), assessment1.class);
+                Intent intent2 = new Intent(getApplicationContext(), BasicTestActivity.class);
                 startActivity(intent2);
             }
         });

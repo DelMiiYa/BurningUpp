@@ -10,10 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
-public class assessment1ListAdapt extends RecyclerView.Adapter<assessment1ListAdapt.assmentViewHolder>  {
-    private List<assment001> questionList;
+public class BasicTestListAdapter extends RecyclerView.Adapter<BasicTestListAdapter.assmentViewHolder>  {
+    private List<BasicTestData> questionList;
 
-    public assessment1ListAdapt(List<assment001> questionList) {
+    public BasicTestListAdapter(List<BasicTestData> questionList) {
         this.questionList = questionList;
     }
 
@@ -42,7 +42,7 @@ public class assessment1ListAdapt extends RecyclerView.Adapter<assessment1ListAd
 
     @Override
     public void onBindViewHolder(@NonNull assmentViewHolder holder, int position) {
-        assment001 currentItem = questionList.get(position);
+        BasicTestData currentItem = questionList.get(position);
         holder.textViewQuestion.setText(currentItem.getQuestionText());
 
         holder.radioGroupAnswer.clearCheck();

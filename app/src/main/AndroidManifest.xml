@@ -13,10 +13,10 @@
         android:theme="@style/Theme.JavaAintShit"
         tools:targetApi="31">
         <activity
-            android:name=".assessment1"
+            android:name=".BasicTestActivity"
             android:exported="false" />
         <activity
-            android:name=".pre_assessment1"
+            android:name=".BurnoutTestActivity"
             android:exported="false" />
         <activity
             android:name=".MoodCalendarActivity"

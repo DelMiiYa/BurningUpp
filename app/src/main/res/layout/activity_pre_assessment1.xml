@@ -5,7 +5,7 @@
     android:id="@+id/preassmentpage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pre_assessment1">
+    tools:context=".BurnoutTestActivity">
 
 
     <View
