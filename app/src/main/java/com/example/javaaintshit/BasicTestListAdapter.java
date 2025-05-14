@@ -63,7 +63,7 @@ public class BasicTestListAdapter extends RecyclerView.Adapter<BasicTestListAdap
                 } else if (checkedId == R.id.btnno) {
                     currentItem.setAnswer(0);
                 }
-                notifyItemChanged(position);
+                //notifyItemChanged(position);
             }
         });
     }
