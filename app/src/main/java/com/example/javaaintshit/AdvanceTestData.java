@@ -13,7 +13,7 @@ public class AdvanceTestData {
         return advanceTestText;
     }
 
-    public Boolean getAnswer() {
+    public Integer getAnswer() {
         return advanceTestAnswer;
     }
 

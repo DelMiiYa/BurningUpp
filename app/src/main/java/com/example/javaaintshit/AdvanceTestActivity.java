@@ -50,8 +50,8 @@ public class AdvanceTestActivity extends AppCompatActivity {
         recViewAssment.setAdapter(AdvanceTestListAdapter);
     }
 
-    public List<Boolean> getAnswers() {
-        List<Boolean> answers = new ArrayList<>();
+    public List<Integer> getAnswers() {
+        List<Integer> answers = new ArrayList<>();
         for (AdvanceTestData question : assmentList) {
             answers.add(question.getAnswer());
         }
