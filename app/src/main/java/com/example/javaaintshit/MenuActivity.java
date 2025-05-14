@@ -55,8 +55,8 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // add Intent for open MoodCalendarActivity
-                //Intent intent = new Intent(MenuActivity.this, MoodCalendarActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(MenuActivity.this, MoodCalendarActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.JavaAintShit"
         tools:targetApi="31">
         <activity
+            android:name=".MoodCalendarActivity"
+            android:exported="false" />
+        <activity
             android:name=".MoodTrackerActivity"
             android:exported="false" />
         <activity
