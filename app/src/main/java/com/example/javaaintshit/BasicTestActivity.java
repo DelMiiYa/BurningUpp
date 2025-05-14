@@ -83,9 +83,9 @@ public class BasicTestActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         List<Integer> answers = getAnswers();
-//                        Intent intent = new Intent(BasicTestActivity.this, NextActivity.class);
-//                        intent.putIntegerArrayListExtra("assessment1Answers", (ArrayList<Integer>) answers);
-//                        startActivity(intent);
+                        Intent intent = new Intent(BasicTestActivity.this, ResultofBasicTestActivity.class);
+                        //intent.putIntegerArrayListExtra("assessment1Answers", (ArrayList<Integer>) answers);
+                        startActivity(intent);
                     }
                 });
             } else {
