@@ -18,7 +18,7 @@
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/design_default_color_on_secondary" />
+            android:background="@color/metallicBlue" />
 
         <TextView
             android:id="@+id/assmenttext"
@@ -49,13 +49,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@color/palerblue"
-                android:fontFamily="@font/abeezee"
                 android:gravity="center"
                 android:layerType="none"
                 android:text="@string/yesbtn"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/black"
+                android:textColor="@color/metallicBlue"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:cornerRadius="20dp" />
@@ -67,11 +66,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@color/palerblue"
-                android:fontFamily="@font/abeezee"
                 android:text="@string/nobtn"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/black"
+                android:textColor="@color/metallicBlue"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:cornerRadius="20dp" />
