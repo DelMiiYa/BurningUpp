@@ -19,6 +19,27 @@
             android:name=".pre_assessment1"
             android:exported="false" />
         <activity
+            android:name=".MoodCalendarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MoodTrackerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TipsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

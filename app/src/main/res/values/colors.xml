@@ -4,4 +4,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="palerblue">#7EBCF4</color>
     <color name="mainblue">#509DED</color>
+    <color name="red">#FFFF0000</color>
+    <color name="orange">#FFFF5a00</color>
+    <color name="havelockblue">#55a4da</color>
+    <color name="hawkesblue">#D6ECFB</color>
+    <color name="MediumBlue">#0000CD</color>
+    <color name="metallicBlue">#294977</color>
+    <color name="gray">#808080</color>
+    <color name="cadetblue">#A0B3C7</color>
 </resources>

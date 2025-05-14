@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <!-- Main content in a vertical LinearLayout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/hawkesblue"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
+            android:text="@string/menu_label"
+            android:textSize="34sp"
+            android:textColor="@color/metallicBlue"/>
+
+        <Button
+            android:id="@+id/burnout_test_button"
+            style="@style/NeutralButtonStyle"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/main_menu_button"
+            android:backgroundTint="@null"
+            android:paddingHorizontal="48dp"
+            android:text="@string/burnout_level_test_button"
+            android:textColor="@color/metallicBlue"
+            android:textSize="24sp"
+            android:drawableLeft="@drawable/baseline_checklist_24"
+            />
+
+        <Button
+            android:id="@+id/mood_tracker_add_button"
+            style="@style/NeutralButtonStyle"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/main_menu_button"
+            android:backgroundTint="@null"
+            android:paddingHorizontal="48dp"
+            android:text="@string/mood_tracker_add_button"
+            android:textColor="@color/metallicBlue"
+            android:drawableLeft="@drawable/baseline_sentiment_satisfied_alt_24"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/mood_calendar_button"
+            style="@style/NeutralButtonStyle"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/main_menu_button"
+            android:backgroundTint="@null"
+            android:paddingHorizontal="48dp"
+            android:text="@string/mood_calendar_button"
+            android:textColor="@color/metallicBlue"
+            android:drawableLeft="@drawable/baseline_calendar_month_24"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <!-- Profile Button in Top-Right Corner -->
+    <ImageButton
+        android:id="@+id/profile_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="profile button"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/baseline_account_circle_24" />
+
+</FrameLayout>
