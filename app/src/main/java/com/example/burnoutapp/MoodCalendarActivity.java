@@ -13,12 +13,21 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 public class MoodCalendarActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
+    private Map<LocalDate, Integer> moodMap = new HashMap<>();
+
+    private CalendarAdapter calendarAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,7 +37,34 @@ public class MoodCalendarActivity extends AppCompatActivity implements CalendarA
         initWidgets();
         selectedDate = LocalDate.now();
         setMonthView();
+        fetchMoodDataFromFirestore();
     }
+
+    private void fetchMoodDataFromFirestore() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String currentUserId = "m5sJVuUxqHZOy1gMQFI4SGOuiXp1"; // or get from FirebaseAuth
+
+        db.collection("moods")
+                .whereEqualTo("userId", currentUserId)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    moodMap.clear();
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        String dateStr = doc.getString("date"); // format: "yyyy-MM-dd"
+                        int mood = doc.getLong("mood").intValue();
+                        LocalDate date = LocalDate.parse(dateStr);
+                        moodMap.put(date, mood);
+                    }
+
+                    if (calendarAdapter != null) {
+                        calendarAdapter.setMoodMap(moodMap);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    e.printStackTrace();
+                });
+    }
+
 
     private void initWidgets()
     {
@@ -40,8 +76,7 @@ public class MoodCalendarActivity extends AppCompatActivity implements CalendarA
     {
         monthYearText.setText(monthYearFromDate(selectedDate));
         ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
-
-        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
+        calendarAdapter = new CalendarAdapter(daysInMonth, this, selectedDate, moodMap);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
@@ -92,7 +127,7 @@ public class MoodCalendarActivity extends AppCompatActivity implements CalendarA
     @Override
     public void onItemClick(int position, String dayText)
     {
-        if(!dayText.equals(""))
+        if(!dayText.isEmpty())
         {
             String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
