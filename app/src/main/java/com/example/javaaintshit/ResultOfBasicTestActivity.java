@@ -12,7 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class ResultofBasicTestActivity extends AppCompatActivity {
+public class ResultOfBasicTestActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class ResultofBasicTestActivity extends AppCompatActivity {
             btnNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //เปิดหน้า menu ยังไม่แก้ ต้องไปหน้า แสดงคำแนะนำแทน
+                    //เปิดหน้า แสดงคำแนะนำ
                     Intent intent2 = new Intent(getApplicationContext(), TipsActivity.class);
                     startActivity(intent2);
                 }

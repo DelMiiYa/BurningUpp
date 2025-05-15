@@ -5,18 +5,23 @@
     <string name="assmentp1">ทำแบบทดสอบ</string>
     <string name="assmentp2">แบบทดสอบที่ 1 :</string>
     <string name="resultoftest">ผลการทำแบบทดสอบ</string>
+    <string name="res101morespace">สรุปผล :\nคุณมีความเสี่ยงต่อ Burnout \n\n\n\n\n</string>
     <string name="res101">\nสรุปผล :\nคุณมีความเสี่ยงต่อ Burnout \n\n</string>
     <string name="lowriskresult">ต่ำ</string>
     <string name="hightriskrusult">สูง</string>
     <string name="btngonextpage">ถัดไป</string>
     <string name="nextassment">ทำแบบทดสอบที่ 2</string>
+    <string name="nextassment2222">ทำแบบทดสอบที่ 2\nทำแบบทดสอบที่ 2\nทำแบบทดสอบที่ 2</string>
+    <string name="markicon">*</string>
+
+
+
+
 
 
     <string name="assmentp2_2">แบบทดสอบที่ 2 :</string>
     <string name="assmentp3">ประเมิน Burnout</string>
     <string name="backtomenu">ย้อนกลับ</string>
-    <string name="reVass1">recycleViewfor assment1</string>
-    <string name="reVass2">recycleViewfor assment2</string>
     <string name="yesbtn">ใช่</string>
     <string name="nobtn">ไม่ใช่</string>
     <string name="submitbtn">ส่งแบบทดสอบ</string>

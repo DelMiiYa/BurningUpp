@@ -22,7 +22,7 @@ public class AdvanceTestActivity extends AppCompatActivity {
 
     // ข้อทางลบ
     int[] negativeIndexes = {0, 1, 2, 5, 7, 12, 13, 15, 19, 4, 9, 10, 14, 21};
-    // ข้อทางบวก
+    // ข้อทางบวก เอาไว้เช็ค
     int[] positiveIndexes = {3, 6, 8, 11, 16, 17, 18, 20};
 
     @Override
@@ -108,7 +108,7 @@ public class AdvanceTestActivity extends AppCompatActivity {
                 } else {
                     score = 6 - answers[i]; // แปลงคะแนนสำหรับข้อทางบวก
                 }
-
+//เช็คว่าคะแนนผลลัพธ์แต่ละด้าน
                 if (isInArray(i, new int[]{0, 1, 2, 5, 7, 12, 13, 15, 19})) {
                     emoExhaust += score;
                 } else if (isInArray(i, new int[]{4, 9, 10, 14, 21})) {
@@ -118,7 +118,7 @@ public class AdvanceTestActivity extends AppCompatActivity {
                 }
             }
 
-            Intent intent = new Intent(this, AdvanceTestActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ResultOfAdvanceTestActivity.class);
             intent.putExtra("emoExhaust", emoExhaust);
             intent.putExtra("dePerson", dePerson);
             intent.putExtra("personalAch", personalAch);

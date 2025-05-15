@@ -13,22 +13,16 @@
         android:theme="@style/Theme.JavaAintShit"
         tools:targetApi="31">
         <activity
-            android:name=".ResultOfAdvanceTest"
+            android:name=".ResultOfAdvanceTestActivity"
             android:exported="false" />
         <activity
             android:name=".AdvanceTestActivity"
             android:exported="false" />
         <activity
-            android:name=".ResultofBasicTestActivity"
+            android:name=".ResultOfBasicTestActivity"
             android:exported="false" />
         <activity
             android:name=".BasicTestActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BasicTestActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ResultofBasicTestActivity"
             android:exported="false" />
         <activity
             android:name=".BurnoutTestActivity"

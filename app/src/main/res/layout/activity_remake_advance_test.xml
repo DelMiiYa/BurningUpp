@@ -28,10 +28,19 @@
 
         <Button
             android:id="@+id/btn_submit_2"
-            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ส่งแบบสอบถาม"
-            android:visibility="gone"/>
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/mainblue"
+            android:fontFamily="sans-serif"
+            android:text="@string/submitbtn"
+            android:textColor="@color/white"
+            android:textScaleX="1.15"
+            android:visibility="gone"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:cornerRadius="20dp" />
     </LinearLayout>
 
 

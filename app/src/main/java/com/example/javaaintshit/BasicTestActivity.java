@@ -85,7 +85,7 @@ public class BasicTestActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(v -> {
             int yesCount = 0;
             for (Integer answer : answers) if (answer==1) yesCount++;
-            Intent intent = new Intent(getApplicationContext(), ResultofBasicTestActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ResultOfBasicTestActivity.class);
             intent.putExtra("yesCount", yesCount);
             startActivity(intent);
             finish();
