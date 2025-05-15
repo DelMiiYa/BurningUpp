@@ -1,8 +1,14 @@
 package com.example.burnoutapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -14,9 +20,16 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Calendar;
+
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText editTextName, editTextAge, editTextEmail, editTextPassword;
+    private EditText editTextName, editTextBirthday, editTextEmail, editTextPassword;
+    private FirebaseAuth mAuth;
+
     private RadioGroup radioGroupGender, radioGroupSleepTime, radioGroupExercise;
     private RatingBar ratingBarStress;
     private Button buttonCreateAccount;
@@ -27,8 +40,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        mAuth = FirebaseAuth.getInstance();
         editTextName = findViewById(R.id.editTextName);
-        editTextAge = findViewById(R.id.editTextAge);
+        editTextBirthday = findViewById(R.id.editTextBirthday);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         radioGroupGender = findViewById(R.id.radioGroupGender);
@@ -38,13 +52,34 @@ public class RegisterActivity extends AppCompatActivity {
         buttonCreateAccount = findViewById(R.id.buttonCreateAccount);
         textViewAlreadyAccount = findViewById(R.id.textViewAlreadyAccount);
 
+        editTextBirthday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        RegisterActivity.this,
+                        (view, selectedYear, selectedMonth, selectedDay) -> {
+                            String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+                            editTextBirthday.setText(selectedDate);
+                        },
+                        year, month, day);
+
+                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis()); // prevent future dates
+                datePickerDialog.show();
+            }
+        });
+
+
         //Assign a Listener to "Create Account"
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Pull data from View
                 String name = editTextName.getText().toString().trim();
-                String age = editTextAge.getText().toString().trim();
                 String email = editTextEmail.getText().toString().trim();
                 String password = editTextPassword.getText().toString().trim();
 
@@ -77,25 +112,40 @@ public class RegisterActivity extends AppCompatActivity {
                     return; // Stop further execution if email or password is empty
                 }
 
-                // Save data to Shared Preferences [maybe rewrite!!!!!]
-                SharedPreferences sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("name", name);
-                editor.putString("age", age);
-                editor.putString("email", email);
-                editor.putString("password", password);
-                editor.putString("gender", gender);
-                editor.putString("sleepTime", sleepTime);
-                editor.putString("exerciseFrequency", exerciseFrequency);
-                editor.putFloat("stressLevel", stressLevel);
-                editor.apply(); // Use apply() for asynchronous saving
-
-                Toast.makeText(RegisterActivity.this, "บันทึกข้อมูลผู้ใช้เรียบร้อย", Toast.LENGTH_SHORT).show();
+                String finalGender = gender;
+                String finalSleepTime = sleepTime;
+                String finalExerciseFrequency = exerciseFrequency;
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Log.d("RegisterActivity", "createUserWithEmail:success");
+                                    // Save data to Shared Preferences [maybe rewrite!!!!!]
+                                    SharedPreferences sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("name", name);
+                                    editor.putString("birthday", editTextBirthday.getText().toString().trim());
+                                    editor.putString("gender", finalGender);
+                                    editor.putString("sleepTime", finalSleepTime);
+                                    editor.putString("exerciseFrequency", finalExerciseFrequency);
+                                    editor.putFloat("stressLevel", stressLevel);
+                                    editor.apply(); // Use apply() for asynchronous saving
+                                    Toast.makeText(RegisterActivity.this, "บัญชีผู้ใช้ถูกสร้างเรียบร้อย", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w("RegisterActivity", "createUserWithEmail:failure", task.getException());
+                                    Toast.makeText(RegisterActivity.this, "การสร้างบัญชีผู้ใช้ล้มเหลว.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
 
                 // **TODO:** You might want to navigate to another screen after successful registration
-                // Intent intent = new Intent(RegisterActivity.this, NextActivity.class);
-                // startActivity(intent);
-                // finish();
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
