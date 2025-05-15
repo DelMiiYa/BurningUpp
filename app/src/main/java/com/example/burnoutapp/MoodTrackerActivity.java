@@ -77,16 +77,19 @@ public class MoodTrackerActivity extends AppCompatActivity {
     }
 
     private void openDatePicker() {
-        DatePickerDialog picker = new DatePickerDialog(this,
+        DatePickerDialog picker = new DatePickerDialog(this, R.style.CustomDatePickerDialog,
                 (view, year, month, dayOfMonth) -> {
                     calendar.set(year, month, dayOfMonth);
                     SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy", new Locale("th", "TH"));
-                    String formatted = sdf.format(calendar.getTime());
-                    int buddhistYear = year + 543;
-                    formatted = formatted.replace(String.valueOf(year), String.valueOf(buddhistYear));
-                    dateDisplay.setText(formatted);
+                    String date = sdf.format(calendar.getTime());
+                    int gregorianYear = calendar.get(Calendar.YEAR);
+                    int buddhistYear = gregorianYear + 543;
+                    date = date.replace(String.valueOf(gregorianYear), String.valueOf(buddhistYear));
+
+                    dateDisplay.setText(date);
                 },
                 calendar.get(Calendar.YEAR),
+
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH));
         picker.getDatePicker().setMaxDate(System.currentTimeMillis()); // prevent future
