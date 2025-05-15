@@ -31,8 +31,8 @@ public class ResultofBasicTestActivity extends AppCompatActivity {
         int yesCount = getIntent().getIntExtra("yesCount", 0);
 
         if (yesCount >= 5) {
-            txtResult.setText("@string/highriskresult");
-            btnNext.setText("@string/goassessment");
+            txtResult.setText("สูง");
+            btnNext.setText("ทำแบบทดสอบที่ 2");
             btnNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -42,8 +42,8 @@ public class ResultofBasicTestActivity extends AppCompatActivity {
                 }
             });
         } else {
-            txtResult.setText("@string/lowriskresult");
-            btnNext.setText("@string/btngonextpage");
+            txtResult.setText("ต่ำ");
+            btnNext.setText("ถัดไป");
             btnNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

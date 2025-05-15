@@ -40,16 +40,18 @@ public class BurnoutTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //เปิดหน้า menu
-                Intent intent2 = new Intent(getApplicationContext(), MenuActivity.class);
-                startActivity(intent2);
+                finish();
+//                Intent intent2 = new Intent(getApplicationContext(), MenuActivity.class);
+//                startActivity(intent2);
             }
         });
         this.btnback2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //เปิดหน้า menu
-                Intent intent2 = new Intent(getApplicationContext(), MenuActivity.class);
-                startActivity(intent2);
+                finish();
+//                Intent intent2 = new Intent(getApplicationContext(), MenuActivity.class);
+//                startActivity(intent2);
             }
         });
 

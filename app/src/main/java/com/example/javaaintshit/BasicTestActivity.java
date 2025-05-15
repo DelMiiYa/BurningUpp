@@ -51,8 +51,9 @@ public class BasicTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //กลับไปเปิดหน้า เลือกแบบสอบถาม
-                Intent intent2 = new Intent(getApplicationContext(), BurnoutTestActivity.class);
-                startActivity(intent2);
+                finish();
+//                Intent intent2 = new Intent(getApplicationContext(), BurnoutTestActivity.class);
+//                startActivity(intent2);
             }
         });
 
