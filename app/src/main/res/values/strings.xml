@@ -53,7 +53,7 @@
     <string name="moodtracker_good">ดี</string>
     <string name="moodtracker_verygood">ดีมาก</string>
     <string name="moodtracker_activitylabel">กิจกรรม</string>
-    <string name="moodtracker_activitywrite">พิมพ์กิจกรรมที่ทำวันนี้</string>
+    <string name="moodtracker_activitywrite">วันนี้คุณทำอะไรไปบ้าง</string>
     <string name="moodtracker_notes">บันทึกช่วยจำ</string>
     <string name="back"><![CDATA[<]]></string>
     <string name="forward"><![CDATA[>]]></string>
