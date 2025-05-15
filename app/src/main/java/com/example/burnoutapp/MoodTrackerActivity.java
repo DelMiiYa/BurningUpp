@@ -17,6 +17,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class MoodTrackerActivity extends AppCompatActivity {
 
     private TextView dateDisplay;
@@ -99,28 +106,45 @@ public class MoodTrackerActivity extends AppCompatActivity {
             return;
         }
 
-        String date = dateDisplay.getText().toString();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Toast.makeText(this, "กรุณาเข้าสู่ระบบอีกครั้ง", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         String note = noteInput.getText().toString();
         String activity = activityInput.getText().toString();
 
-        String PREF_NAME = "mood_tracker_data";
-        SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
+        // Save date in consistent format for Firestore
+        SimpleDateFormat firebaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String firebaseDate = firebaseDateFormat.format(calendar.getTime());
 
-        String entryKey = "entry_" + date;
-        String data = selectedMood + "|" + activity + "|" + note;
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        editor.putString(entryKey, data);
-        editor.apply();
+        Map<String, Object> moodData = new HashMap<>();
+        moodData.put("userId", user.getUid());
+        moodData.put("date", firebaseDate);
+        moodData.put("mood", selectedMood);
+        moodData.put("activity", activity);
+        moodData.put("note", note);
 
-        Toast.makeText(this, "บันทึกสำเร็จ", Toast.LENGTH_SHORT).show();
+        String docId = user.getUid() + "_" + firebaseDate;
 
-        // Reset UI
-        noteInput.setText("");
-        activityInput.setText("");
-        for (ImageView img : moodImages) img.setAlpha(1.0f);
-        selectedMood = -1;
-        Intent intent = new Intent(MoodTrackerActivity.this, MenuActivity.class);
-        startActivity(intent);
+        db.collection("moods")
+                .document(docId)  // Use custom ID: one mood per user per date
+                .set(moodData)    // set() will overwrite if it already exists
+                .addOnSuccessListener(documentReference -> {
+                    Toast.makeText(this, "บันทึกสำเร็จ", Toast.LENGTH_SHORT).show();
+                    noteInput.setText("");
+                    activityInput.setText("");
+                    for (ImageView img : moodImages) img.setAlpha(1.0f);
+                    selectedMood = -1;
+                    startActivity(new Intent(MoodTrackerActivity.this, MenuActivity.class));
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "เกิดข้อผิดพลาดในการบันทึก", Toast.LENGTH_SHORT).show();
+                });
+
     }
 }
