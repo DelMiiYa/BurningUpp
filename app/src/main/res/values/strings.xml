@@ -4,6 +4,14 @@
     <string name="testbtn">BtnOwO</string>
     <string name="assmentp1">ทำแบบทดสอบ</string>
     <string name="assmentp2">แบบทดสอบที่ 1 :</string>
+    <string name="resultoftest">ผลการทำแบบทดสอบ</string>
+    <string name="res101">\nสรุปผล :\nคุณมีความเสี่ยงต่อ Burnout \n\n</string>
+    <string name="lowriskresult">ต่ำ</string>
+    <string name="hightriskrusult">สูง</string>
+    <string name="btngonextpage">ถัดไป</string>
+    <string name="nextassment">ทำแบบทดสอบที่ 2</string>
+
+
     <string name="assmentp2_2">แบบทดสอบที่ 2 :</string>
     <string name="assmentp3">ประเมิน Burnout</string>
     <string name="backtomenu">ย้อนกลับ</string>

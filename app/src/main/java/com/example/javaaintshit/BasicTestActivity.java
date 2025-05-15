@@ -4,94 +4,95 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BasicTestActivity extends AppCompatActivity {
 
-    private RecyclerView recViewAssment;
-    private BasicTestListAdapter BasicTestListAdapter;
-    private List<BasicTestData> assmentList;
-    private Button btnsubmit;
+    String[] questions = {
+            "ข้อ 1: ฉันเริ่มรู้สึกว่าหน้าที่การงานที่เคยทำด้วยความกระตือรือร้น กลายเป็นเรื่องน่าเบื่อหน่าย",
+            "ข้อ 2: ฉันรู้สึกว่าตัวเองไม่มีคุณค่า หรือไม่มีความหมายกับงานที่ทำ",
+            "ข้อ 3: ฉันรู้สึกเหนื่อยล้า แม้ว่าจะได้พักผ่อนเพียงพอแล้วก็ตาม",
+            "ข้อ 4: ฉันรู้สึกเครียดหรือวิตกกังวลเกี่ยวกับงานตลอดเวลา แม้ในช่วงเวลาที่ควรพักผ่อน",
+            "ข้อ 5: ฉันมีปัญหาในการจดจ่อหรือทำงานที่ต้องใช้สมาธิอย่างต่อเนื่อง",
+            "ข้อ 6: ฉันเริ่มหลีกเลี่ยงหรือลดการติดต่อกับเพื่อนร่วมงานหรือลูกค้า",
+            "ข้อ 7: ฉันรู้สึกหมดกำลังใจเมื่อคิดถึงการทำงานในแต่ละวัน",
+            "ข้อ 8: ฉันรู้สึกว่าไม่มีพลังหรือแรงบันดาลใจที่จะพัฒนาตนเองในหน้าที่การงาน",
+            "ข้อ 9: ฉันเริ่มมีอาการทางกาย เช่น ปวดหัว ปวดท้อง หรือปวดเมื่อยเรื้อรังโดยไม่ทราบสาเหตุ",
+            "ข้อ 10: ฉันเคยคิดจะลาออกหรือเปลี่ยนงานเพราะรู้สึกว่าตนเองไม่สามารถทนต่อสภาพแวดล้อมการทำงานได้อีกต่อไป"
+    };
 
+    Integer[] answers = new Integer[questions.length]; // ค่าเริ่มต้นจะเป็น null
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_assessment1);
+        setContentView(R.layout.activity_test_new_basic_test);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        recViewAssment = findViewById(R.id.recyviewforass1);
-        recViewAssment.setLayoutManager(new LinearLayoutManager(this));
-        recViewAssment.setHasFixedSize(true);
+        LinearLayout questionList = findViewById(R.id.question_list);
+        Button btnSubmit = findViewById(R.id.btn_submit);
+        Button btnBackIcon = findViewById(R.id.btnbacktomenuicon);
 
-        assmentList = new ArrayList<>();
-        assmentList.add(new BasicTestData("ฉันเริ่มรู้สึกว่าหน้าที่การงานที่เคยทำด้วยความกระตือรือร้น กลายเป็นเรื่องน่าเบื่อหน่าย"));
-        assmentList.add(new BasicTestData("ฉันรู้สึกว่าตัวเองไม่มีคุณค่า หรือไม่มีความหมายกับงานที่ทำ"));
-        assmentList.add(new BasicTestData("ฉันรู้สึกเหนื่อยล้า แม้ว่าจะได้พักผ่อนเพียงพอแล้วก็ตาม"));
-        assmentList.add(new BasicTestData("ฉันรู้สึกเครียดหรือวิตกกังวลเกี่ยวกับงานตลอดเวลา แม้ในช่วงเวลาที่ควรพักผ่อน"));
-        assmentList.add(new BasicTestData("ฉันมีปัญหาในการจดจ่อหรือทำงานที่ต้องใช้สมาธิอย่างต่อเนื่อง"));
-        assmentList.add(new BasicTestData("ฉันเริ่มหลีกเลี่ยงหรือลดการติดต่อกับเพื่อนร่วมงานหรือลูกค้า"));
-        assmentList.add(new BasicTestData("ฉันรู้สึกหมดกำลังใจเมื่อคิดถึงการทำงานในแต่ละวัน"));
-        assmentList.add(new BasicTestData("ฉันรู้สึกว่าไม่มีพลังหรือแรงบันดาลใจที่จะพัฒนาตนเองในหน้าที่การงาน"));
-        assmentList.add(new BasicTestData("ฉันเริ่มมีอาการทางกาย เช่น ปวดหัว ปวดท้อง หรือปวดเมื่อยเรื้อรังโดยไม่ทราบสาเหตุ"));
-        assmentList.add(new BasicTestData("ฉันเคยคิดจะลาออกหรือเปลี่ยนงานเพราะรู้สึกว่าตนเองไม่สามารถทนต่อสภาพแวดล้อมการทำงานได้อีกต่อไป"));
-
-        BasicTestListAdapter = new BasicTestListAdapter(assmentList);
-        recViewAssment.setAdapter(BasicTestListAdapter);
-
-        btnsubmit = findViewById(R.id.btnsubmit); // เปลี่ยน ID ปุ่ม
-        btnsubmit.setVisibility(View.GONE); // ซ่อนปุ่มเริ่มต้น
-
-        checkIfAllAnswered(); // ตรวจสอบครั้งแรกเมื่อ Activity สร้าง
-    }
-    public List<Integer> getAnswers() {
-        List<Integer> answers = new ArrayList<>();
-        for (BasicTestData question : assmentList) {
-            answers.add(question.getAnswer());
-        }
-        return answers;
-
-    }
-    public void checkIfAllAnswered() {
-        boolean allAnswered = true;
-        for (BasicTestData question : assmentList) {
-            if (question.getAnswer() == null) {
-                allAnswered = false;
-                break;
+        btnBackIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //กลับไปเปิดหน้า เลือกแบบสอบถาม
+                Intent intent2 = new Intent(getApplicationContext(), BurnoutTestActivity.class);
+                startActivity(intent2);
             }
+        });
+
+        for (int i = 0; i < questions.length; i++) {
+            int index = i;
+            TextView questionText = new TextView(this);
+            questionText.setText(questions[i]);
+            questionList.addView(questionText);
+
+            RadioGroup radioGroup = new RadioGroup(this);
+            RadioButton yes = new RadioButton(this);
+            yes.setText("ใช่");
+            RadioButton no = new RadioButton(this);
+            no.setText("ไม่ใช่");
+            radioGroup.addView(yes);
+            radioGroup.addView(no);
+            questionList.addView(radioGroup);
+
+            radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+                if (checkedId == yes.getId()) {
+                    answers[index] = 1;
+                } else {
+                    answers[index] = 0;
+                }
+                if (checkAllAnswered()) btnSubmit.setVisibility(View.VISIBLE);
+            });
         }
 
-        if (btnsubmit != null) {
-            if (allAnswered) {
-                btnsubmit.setVisibility(View.VISIBLE);
-                btnsubmit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        List<Integer> answers = getAnswers();
-                        Intent intent = new Intent(BasicTestActivity.this, ResultofBasicTestActivity.class);
-                        //intent.putIntegerArrayListExtra("assessment1Answers", (ArrayList<Integer>) answers);
-                        startActivity(intent);
-                    }
-                });
-            } else {
-                btnsubmit.setVisibility(View.GONE);
-                btnsubmit.setOnClickListener(null); // ป้องกันการทำงานเมื่อยังไม่พร้อม
-            }
-        }
+        btnSubmit.setOnClickListener(v -> {
+            int yesCount = 0;
+            for (Integer answer : answers) if (answer==1) yesCount++;
+            Intent intent = new Intent(getApplicationContext(), ResultofBasicTestActivity.class);
+            intent.putExtra("yesCount", yesCount);
+            startActivity(intent);
+            finish();
+        });
+    }
+
+    private boolean checkAllAnswered() {
+        for (Integer answer : answers) if (answer == null) return false;
+        return true;
     }
 }

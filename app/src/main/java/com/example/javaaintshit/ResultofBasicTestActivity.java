@@ -1,6 +1,10 @@
 package com.example.javaaintshit;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,11 +18,40 @@ public class ResultofBasicTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_resultof_basic_test);
+        setContentView(R.layout.activity_r1_result);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        TextView txtResult = findViewById(R.id.txt_result);
+        Button btnNext = findViewById(R.id.btn_next);
+
+        int yesCount = getIntent().getIntExtra("yesCount", 0);
+
+        if (yesCount >= 5) {
+            txtResult.setText("@string/highriskresult");
+            btnNext.setText("@string/goassessment");
+            btnNext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //เปิดหน้า advance assessment
+                    Intent intent2 = new Intent(getApplicationContext(), AdvanceTestActivity.class);
+                    startActivity(intent2);
+                }
+            });
+        } else {
+            txtResult.setText("@string/lowriskresult");
+            btnNext.setText("@string/btngonextpage");
+            btnNext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //เปิดหน้า menu ยังไม่แก้ ต้องไปหน้า แสดงคำแนะนำแทน
+                    Intent intent2 = new Intent(getApplicationContext(), TipsActivity.class);
+                    startActivity(intent2);
+                }
+            });
+        }
     }
 }
