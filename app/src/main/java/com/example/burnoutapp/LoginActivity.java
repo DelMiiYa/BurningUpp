@@ -1,4 +1,4 @@
-package com.example.javaaintshit;
+package com.example.burnoutapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 

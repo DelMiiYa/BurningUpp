@@ -1,13 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.javaaintshit"
+    namespace = "com.example.burnoutapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.javaaintshit"
+        applicationId = "com.delmii.burnoutapp"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -41,4 +42,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     implementation(libs.mpandroidchart)
+
+    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
+    implementation("com.google.firebase:firebase-analytics")
 }

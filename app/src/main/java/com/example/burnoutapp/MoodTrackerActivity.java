@@ -1,4 +1,4 @@
-package com.example.javaaintshit;
+package com.example.burnoutapp;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;

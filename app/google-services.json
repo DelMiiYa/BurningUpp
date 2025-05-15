@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1074444612360",
+    "project_id": "burnoutcpe121",
+    "storage_bucket": "burnoutcpe121.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074444612360:android:6194ccf0ea4bbcbbd172bd",
+        "android_client_info": {
+          "package_name": "com.delmii.burnoutapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1-sQxJBZds3o3Kwfxdqqd2VvpvGpxZEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
