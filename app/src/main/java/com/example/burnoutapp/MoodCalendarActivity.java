@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -42,7 +43,7 @@ public class MoodCalendarActivity extends AppCompatActivity implements CalendarA
 
     private void fetchMoodDataFromFirestore() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String currentUserId = "m5sJVuUxqHZOy1gMQFI4SGOuiXp1"; // or get from FirebaseAuth
+        String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid(); // or get from FirebaseAuth
 
         db.collection("moods")
                 .whereEqualTo("userId", currentUserId)
