@@ -33,8 +33,8 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // add Intent for open BurnoutTestActivity
-                //Intent intent = new Intent(MenuActivity.this, BurnoutTestActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(MenuActivity.this, BurnoutTestActivity.class);
+                startActivity(intent);
             }
         });
 
