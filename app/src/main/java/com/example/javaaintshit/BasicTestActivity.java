@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class BasicTestActivity extends AppCompatActivity {
 
-    String[] questions = {
+    String[] questions = { //สร้างและกำหนดคำถาม
             "ข้อ 1: ฉันเริ่มรู้สึกว่าหน้าที่การงานที่เคยทำด้วยความกระตือรือร้น กลายเป็นเรื่องน่าเบื่อหน่าย",
             "ข้อ 2: ฉันรู้สึกว่าตัวเองไม่มีคุณค่า หรือไม่มีความหมายกับงานที่ทำ",
             "ข้อ 3: ฉันรู้สึกเหนื่อยล้า แม้ว่าจะได้พักผ่อนเพียงพอแล้วก็ตาม",
@@ -30,7 +30,7 @@ public class BasicTestActivity extends AppCompatActivity {
             "ข้อ 10: ฉันเคยคิดจะลาออกหรือเปลี่ยนงานเพราะรู้สึกว่าตนเองไม่สามารถทนต่อสภาพแวดล้อมการทำงานได้อีกต่อไป"
     };
 
-    Integer[] answers = new Integer[questions.length]; // ค่าเริ่มต้นจะเป็น null
+    Integer[] answers = new Integer[questions.length]; //ที่เก็บคำตอบของแต่ะข้อ
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,8 @@ public class BasicTestActivity extends AppCompatActivity {
             return insets;
         });
 
-        LinearLayout questionList = findViewById(R.id.question_list);
-        Button btnSubmit = findViewById(R.id.btn_submit);
+        LinearLayout questionList = findViewById(R.id.question_list); //ช่องสำหรับสร้างข้อความคำถามและตัวเลือกแต่ละข้อ
+        Button btnSubmit = findViewById(R.id.btn_submit);//ปุ่มกดส่งแบบสอบถาม
         Button btnBackIcon = findViewById(R.id.btnbacktomenuicon);
 
         btnBackIcon.setOnClickListener(new View.OnClickListener() {
@@ -52,27 +52,25 @@ public class BasicTestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //กลับไปเปิดหน้า เลือกแบบสอบถาม
                 finish();
-//                Intent intent2 = new Intent(getApplicationContext(), BurnoutTestActivity.class);
-//                startActivity(intent2);
             }
         });
 
-        for (int i = 0; i < questions.length; i++) {
+        for (int i = 0; i < questions.length; i++) { //สร้างช่องคำถามและ คำตอบ(Loop ย่อย)แต่ละข้อใน Layout
             int index = i;
             TextView questionText = new TextView(this);
             questionText.setText(questions[i]);
             questionList.addView(questionText);
 
-            RadioGroup radioGroup = new RadioGroup(this);
-            RadioButton yes = new RadioButton(this);
+            RadioGroup radioGroup = new RadioGroup(this); //สร้างกลุ่มตัวเลือก Radio สำหรับคำตอบ
+            RadioButton yes = new RadioButton(this); //สร้างตัวเลือกคำตอบ ใช่
             yes.setText("ใช่");
-            RadioButton no = new RadioButton(this);
+            RadioButton no = new RadioButton(this); //สร้างตัวเลือกคำตอบ ไม่ใช่
             no.setText("ไม่ใช่");
             radioGroup.addView(yes);
             radioGroup.addView(no);
             questionList.addView(radioGroup);
 
-            radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            radioGroup.setOnCheckedChangeListener((group, checkedId) -> { //กำหนดค่าของตัวเลือก และสร้างการตรวจสอบการตอบคำถาม เพื่อให้ทำครบทุกข้อ
                 if (checkedId == yes.getId()) {
                     answers[index] = 1;
                 } else {
@@ -82,7 +80,7 @@ public class BasicTestActivity extends AppCompatActivity {
             });
         }
 
-        btnSubmit.setOnClickListener(v -> {
+        btnSubmit.setOnClickListener(v -> {//เมื่อกดส่งแบบทดสอบ นับจำนวนข้อที่ตอบ ใช่ และส่งข้อมูลพร้อมเปิดหน้าผลลัพธ์
             int yesCount = 0;
             for (Integer answer : answers) if (answer==1) yesCount++;
             Intent intent = new Intent(getApplicationContext(), ResultOfBasicTestActivity.class);
@@ -92,7 +90,7 @@ public class BasicTestActivity extends AppCompatActivity {
         });
     }
 
-    private boolean checkAllAnswered() {
+    private boolean checkAllAnswered() { //เช็คว่าตอบทุกข้อหรือไม่มีผลกับการแสดงปุ่มส่งแบบสอบถาม
         for (Integer answer : answers) if (answer == null) return false;
         return true;
     }
