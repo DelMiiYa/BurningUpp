@@ -72,11 +72,11 @@ public class ResultOfAdvanceTestActivity extends AppCompatActivity {
             resultbyDePerson = Color.GREEN;
         }
         if(lowPersonalAch){
-            resultbyPersonalAch = Color.GREEN;
+            resultbyPersonalAch = Color.RED;
         }else if(mediumPersonalAch){
             resultbyPersonalAch = Color.YELLOW;
         }else{
-            resultbyPersonalAch = Color.RED;
+            resultbyPersonalAch = Color.GREEN;
         }
 
 
