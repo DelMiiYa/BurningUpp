@@ -76,26 +76,34 @@
             android:layout_marginTop="20dp" />
 
         <LinearLayout
+            android:id="@+id/fire_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@drawable/bg_rounded_white"
             android:layout_marginTop="8dp">
 
-            <ImageView android:layout_width="40dp" android:layout_height="40dp"
-                android:src="@drawable/ic_fire_on"
-                android:backgroundTint="@color/metallicBlue"/>
-            <ImageView android:layout_width="40dp" android:layout_height="40dp"
+            <ImageView
+                android:id="@+id/fire1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/ic_fire_off" />
-            <ImageView android:layout_width="40dp" android:layout_height="40dp"
+
+            <ImageView
+                android:id="@+id/fire2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/ic_fire_off" />
-            <ImageView android:layout_width="40dp" android:layout_height="40dp"
-                android:src="@drawable/ic_fire_off" />
-            <ImageView android:layout_width="40dp" android:layout_height="40dp"
+
+            <ImageView
+                android:id="@+id/fire3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/ic_fire_off" />
         </LinearLayout>
 
-<!--        &lt;!&ndash; Progress Label &ndash;&gt;-->
+
+        <!--        &lt;!&ndash; Progress Label &ndash;&gt;-->
 <!--        <TextView-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
