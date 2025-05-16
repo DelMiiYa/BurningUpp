@@ -29,11 +29,11 @@ public class ResultOfBasicTestActivity extends AppCompatActivity {
             return insets;
         });
 
-        TextView txtResult = findViewById(R.id.txt_result);
-        Button btnNext = findViewById(R.id.btn_next);
+        TextView txtResult = findViewById(R.id.txt_result); //ข้อความแสดงผล
+        Button btnNext = findViewById(R.id.btn_next);   //ปุ่มไปหน้า ถัดไป
 
         int yesCount = getIntent().getIntExtra("yesCount", 0);
-
+//กำหนดค่าสำหรับข้อความแสดงผล
         if (yesCount >= 5) {
             txtResult.setText("สูง");
             btnNext.setText("ทำแบบทดสอบที่ 2");

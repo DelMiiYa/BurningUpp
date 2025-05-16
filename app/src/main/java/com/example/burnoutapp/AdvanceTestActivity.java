@@ -16,14 +16,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class AdvanceTestActivity extends AppCompatActivity {
-    String[] questions = new String[22]; // ข้อความย่อที่ใช้แทนตัวอย่าง
+    String[] questions = new String[22]; //สร้างคำถาม
 
-    Integer[] answers = new Integer[22];
+    Integer[] answers = new Integer[22]; //ที่เก็บคำตอบของแต่ะข้อ
 
-    // ข้อทางลบ
-    int[] negativeIndexes = {0, 1, 2, 5, 7, 12, 13, 15, 19, 4, 9, 10, 14, 21};
-    // ข้อทางบวก เอาไว้เช็ค
-    int[] positiveIndexes = {3, 6, 8, 11, 16, 17, 18, 20};
+    int[] negativeIndexes = {0, 1, 2, 5, 7, 12, 13, 15, 19, 4, 9, 10, 14, 21};// ข้อทางลบ
+
+    int[] positiveIndexes = {3, 6, 8, 11, 16, 17, 18, 20};// ข้อทางบวก เอาไว้เช็คเฉยๆ
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +34,8 @@ public class AdvanceTestActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-//        // สร้างคำถามตัวอย่าง
-//        for (int i = 0; i < 22; i++) {
-//            questions[i] = "ข้อ " + (i + 1);
-//        }
+
+        //กำหนดคำถาม
         questions[0] = "ข้อ 1 : ฉันรู้สึกห่อเหี่ยวจิตใจกับงานที่ทำอยู่";
         questions[1] = "ข้อ 2 : ฉันจะรู้สึกหมดหวังเมื่อถึงเวลาเลิกงาน";
         questions[2] = "ข้อ 3 : ฉันรู้สึกอ่อนเพลียตอนตื่นนอนและตอนเข้าทำงาน";
@@ -62,10 +59,10 @@ public class AdvanceTestActivity extends AppCompatActivity {
         questions[20] = "ข้อ 21 : ในการทำงานฉันสามารถเผชิญปัญหาทางอารมณ์ได้อย่างสงบนิ่ง";
         questions[21] = "ข้อ 22 : ฉันรู้สึกว่าผู้ร่วมงานและผู้รับบริการตำหนิฉันในส่วนที่เป็นปัญหาของเขา";
 
-        LinearLayout questionList = findViewById(R.id.question_list_2);
-        Button btnSubmit = findViewById(R.id.btn_submit_2);
+        LinearLayout questionList = findViewById(R.id.question_list_2); //ช่องสำหรับสร้างข้อความคำถามและตัวเลือกแต่ละข้อ
+        Button btnSubmit = findViewById(R.id.btn_submit_2); //ปุ่มกดส่งแบบสอบถาม
 
-        String[] choices = {
+        String[] choices = {//กำหนดตัวเลือก
                 "ไม่เคยรู้สึกเช่นนั้นเลย",
                 "ปีละ 2-3 ครั้ง",
                 "เดือนละ 1 ครั้ง",
@@ -75,13 +72,13 @@ public class AdvanceTestActivity extends AppCompatActivity {
                 "ทุกๆ วัน"
         };
 
-        for (int i = 0; i < questions.length; i++) {
+        for (int i = 0; i < questions.length; i++) {//สร้างช่องคำถามและ คำตอบ(Loop ย่อย)แต่ละข้อใน Layout
             int index = i;
             TextView questionText = new TextView(this);
             questionText.setText(questions[i]);
             questionList.addView(questionText);
 
-            RadioGroup radioGroup = new RadioGroup(this);
+            RadioGroup radioGroup = new RadioGroup(this);//สร้างกลุ่มตัวเลือก Radio สำหรับคำตอบ
             for (int j = 0; j < choices.length; j++) {
                 RadioButton rb = new RadioButton(this);
                 rb.setText(choices[j]);
@@ -89,26 +86,26 @@ public class AdvanceTestActivity extends AppCompatActivity {
             }
             questionList.addView(radioGroup);
 
-            radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            radioGroup.setOnCheckedChangeListener((group, checkedId) -> {//สร้างการตรวจสอบการตอบคำถาม เพื่อให้ทำครบทุกข้อ
                 int selected = group.indexOfChild(group.findViewById(checkedId));
                 answers[index] = selected;
                 if (checkAllAnswered()) btnSubmit.setVisibility(View.VISIBLE);
             });
         }
 
-        btnSubmit.setOnClickListener(v -> {
+        btnSubmit.setOnClickListener(v -> {//หลังจากกดปุ่มส่งแบบสอบถามจะส่งข้อมูลไปคำนวณหน้าถัดไป
             int emoExhaust = 0;
             int dePerson = 0;
             int personalAch = 0;
 
             for (int i = 0; i < 22; i++) {
                 int score;
-                if (isNegative(i)) {
+                if (isNegative(i)) {//แปลงคะแนนจากตัวเลือกคำตอบ สำหรับข้อทางลบ
                     score = answers[i]; // 0-6
-                } else {
-                    score = 6 - answers[i]; // แปลงคะแนนสำหรับข้อทางบวก
+                } else {//แปลงคะแนนจากตัวเลือกคำตอบ สำหรับข้อทางบวก
+                    score = 6 - answers[i];
                 }
-//เช็คว่าคะแนนผลลัพธ์แต่ละด้าน
+                //รวมคะแนนผลลัพธ์แต่ละด้านตาม index ของแต่ละข้อ
                 if (isInArray(i, new int[]{0, 1, 2, 5, 7, 12, 13, 15, 19})) {
                     emoExhaust += score;
                 } else if (isInArray(i, new int[]{4, 9, 10, 14, 21})) {
@@ -118,8 +115,8 @@ public class AdvanceTestActivity extends AppCompatActivity {
                 }
             }
 
-            Intent intent = new Intent(getApplicationContext(), ResultOfAdvanceTestActivity.class);
-            intent.putExtra("emoExhaust", emoExhaust);
+            Intent intent = new Intent(getApplicationContext(), ResultOfAdvanceTestActivity.class); //เปิดหน้าแสดงผลลัพธ์
+            intent.putExtra("emoExhaust", emoExhaust); //ส่งข้อมูลไปด้วย
             intent.putExtra("dePerson", dePerson);
             intent.putExtra("personalAch", personalAch);
             startActivity(intent);
@@ -127,17 +124,17 @@ public class AdvanceTestActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isNegative(int index) {
+    private boolean isNegative(int index) { //เช็คว่าเป็นข้อทางลบหรือไม่ มีผลสำหรับการแปลงคะแนนของตัวเลือกคำตอบ
         for (int i : negativeIndexes) if (i == index) return true;
         return false;
     }
 
-    private boolean isInArray(int index, int[] array) {
+    private boolean isInArray(int index, int[] array) { //ใช้เช็ค index แต่ละข้อว่าตรงกับที่กำหนดหรือไม่ สำหรับแยกประเภทของคำถามแต่ละด้าน
         for (int i : array) if (i == index) return true;
         return false;
     }
 
-    private boolean checkAllAnswered() {
+    private boolean checkAllAnswered() { //เช็คว่าตอบทุกข้อหรือไม่มีผลกับการแสดงปุ่มส่งแบบสอบถาม
         for (Integer answer : answers) if (answer == null) return false;
         return true;
 
