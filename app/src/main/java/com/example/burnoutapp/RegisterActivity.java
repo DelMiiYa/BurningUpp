@@ -111,6 +111,14 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "กรุณากรอกอีเมลและรหัสผ่าน", Toast.LENGTH_SHORT).show();
                     return; // Stop further execution if email or password is empty
                 }
+                if (TextUtils.isEmpty(name)) {
+                    Toast.makeText(RegisterActivity.this, "กรุณากรอกชื่อ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(editTextBirthday.getText().toString().trim())) {
+                    Toast.makeText(RegisterActivity.this, "กรุณาเลือกวันเกิด", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 String finalGender = gender;
                 String finalSleepTime = sleepTime;
@@ -133,6 +141,10 @@ public class RegisterActivity extends AppCompatActivity {
                                     editor.putFloat("stressLevel", stressLevel);
                                     editor.apply(); // Use apply() for asynchronous saving
                                     Toast.makeText(RegisterActivity.this, "บัญชีผู้ใช้ถูกสร้างเรียบร้อย", Toast.LENGTH_SHORT).show();
+
+                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w("RegisterActivity", "createUserWithEmail:failure", task.getException());
@@ -141,11 +153,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
-                // **TODO:** You might want to navigate to another screen after successful registration
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
             }
         });
 
