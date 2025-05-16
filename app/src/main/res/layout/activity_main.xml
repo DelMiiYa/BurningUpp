@@ -3,17 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/hawkesblue"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="32dp"
-    tools:context=".MainActivity"
-    android:background="@color/hawkesblue">
+    tools:context=".MainActivity">
+
     <ImageView
         android:id="@+id/app_logo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/logoapp" android:contentDescription="@string/app_logo"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="24dp"
+        android:contentDescription="@string/app_logo"
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/welcome_message"
@@ -28,10 +30,10 @@
         android:id="@+id/start_button"
         android:layout_width="190dp"
         android:layout_height="70dp"
+        android:backgroundTint="@color/havelockblue"
         android:paddingHorizontal="48dp"
         android:text="@string/start"
-        android:textSize="24sp"
-        android:backgroundTint="@color/havelockblue"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
 </LinearLayout>

@@ -34,7 +34,7 @@
 
 
     //Common
-    <string name="app_name">ชื่อแอปของคุณ</string>
+    <string name="app_name">BurningUpp</string>
     <string name="app_logo">โลโก้แอปพลิเคชัน</string>
 
     //Login
