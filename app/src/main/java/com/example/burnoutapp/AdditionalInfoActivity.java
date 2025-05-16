@@ -2,6 +2,7 @@ package com.example.burnoutapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,7 +21,7 @@ public class AdditionalInfoActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
     FirebaseAuth auth;
-
+    Button buttonBackToMenu;
     TextView userInfoText, basicTestText, advanceTestText, burnoutLevelText;
 
     @Override
@@ -34,6 +35,15 @@ public class AdditionalInfoActivity extends AppCompatActivity {
         userInfoText = findViewById(R.id.text_user_info);
         advanceTestText = findViewById(R.id.text_advance_test_result);
         burnoutLevelText = findViewById(R.id.text_burnout_level);
+        buttonBackToMenu = findViewById(R.id.backMenuButton);
+
+        buttonBackToMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdditionalInfoActivity.this, MenuActivity.class);
+                startActivity(intent);
+            }
+        });
 
         loadUserReport();
     }
@@ -77,4 +87,5 @@ public class AdditionalInfoActivity extends AppCompatActivity {
                     Toast.makeText(this, "เกิดข้อผิดพลาดในการโหลดข้อมูล", Toast.LENGTH_SHORT).show();
                 });
     }
+
 }
