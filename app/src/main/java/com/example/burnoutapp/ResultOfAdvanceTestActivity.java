@@ -1,5 +1,4 @@
-package com.example.javaaintshit;
-
+package com.example.burnoutapp;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
