@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/hawkesblue"
+    android:gravity="center_horizontal"
+    tools:context=".AdditionalInfoActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/stethoscope"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Stethoscope Icon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ข้อมูลเพิ่มเติมสำหรับหมอ"
+        android:textSize="20sp"
+        android:textColor="@color/metallicBlue"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="จุดกำเนิดปัญหา:"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_gravity="start"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/originOfProblemEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:hint="ระบุจุดกำเนิดปัญหา" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ปัญหาหลัก:"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_gravity="start"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/mainProblemEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:hint="ระบุปัญหาหลัก" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="สิ่งแวดล้อม:"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_gravity="start"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/environmentEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:hint="ระบุสิ่งแวดล้อม" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ส่งข้อมูล"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/havelockblue"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ย้อนกลับ"
+            android:textSize="16sp"
+            android:textColor="@color/havelockblue"
+            android:backgroundTint="@color/white"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

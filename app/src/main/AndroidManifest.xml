@@ -28,6 +28,9 @@
             android:name=".BurnoutTestActivity"
             android:exported="false" />
         <activity
+            android:name=".AdditionalInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".MoodCalendarActivity"
             android:exported="false" />
         <activity
