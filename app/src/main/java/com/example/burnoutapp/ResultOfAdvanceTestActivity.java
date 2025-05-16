@@ -13,6 +13,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class ResultOfAdvanceTestActivity extends AppCompatActivity {
 
     @Override
@@ -86,22 +90,40 @@ public class ResultOfAdvanceTestActivity extends AppCompatActivity {
             btnNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //แก้เป็น เปิดหน้า ส่งหมอ แต่ตอนนี้ยังไม่มีหน้าส่งหมอ
-                    Intent intent2 = new Intent(getApplicationContext(), TipsActivity.class);
-                    startActivity(intent2);
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (user != null) {
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        db.collection("users")
+                                .document(user.getUid())
+                                .update("burnoutLevel", 3)
+                                .addOnSuccessListener(aVoid -> {
+                                    Intent intent2 = new Intent(getApplicationContext(), AdditionalInfoActivity.class);
+                                    startActivity(intent2);
+                                });
+                    }
                 }
             });
+
         } else {
             result = "ต่ำ";
             resultcolor = Color.GREEN;
             btnNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //เปิดหน้า แสดงคำแนะนำ
-                    Intent intent2 = new Intent(getApplicationContext(), TipsActivity.class);
-                    startActivity(intent2);
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (user != null) {
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        db.collection("users")
+                                .document(user.getUid())
+                                .update("burnoutLevel", 2)
+                                .addOnSuccessListener(aVoid -> {
+                                    Intent intent2 = new Intent(getApplicationContext(), TipsActivity.class);
+                                    startActivity(intent2);
+                                });
+                    }
                 }
             });
+
         }
 
         String detailbyExhaust = "คะแนนความอ่อนล้าทางอารมณ์ : " + emoExhaust;

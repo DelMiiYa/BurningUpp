@@ -12,6 +12,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class ResultOfBasicTestActivity extends AppCompatActivity {
 
     @Override
@@ -47,9 +51,19 @@ public class ResultOfBasicTestActivity extends AppCompatActivity {
             btnNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //เปิดหน้า แสดงคำแนะนำ
-                    Intent intent2 = new Intent(getApplicationContext(), TipsActivity.class);
-                    startActivity(intent2);
+                    // Save burnoutLevel = 1 to Firestore
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (user != null) {
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        db.collection("users")
+                                .document(user.getUid())
+                                .update("burnoutLevel", 1)
+                                .addOnSuccessListener(aVoid -> {
+                                    // open tips screen
+                                    Intent intent2 = new Intent(getApplicationContext(), TipsActivity.class);
+                                    startActivity(intent2);
+                                });
+                    }
                 }
             });
         }
