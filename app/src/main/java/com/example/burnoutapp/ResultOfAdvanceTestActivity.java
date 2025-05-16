@@ -17,6 +17,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ResultOfAdvanceTestActivity extends AppCompatActivity {
 
     @Override
@@ -95,35 +98,51 @@ public class ResultOfAdvanceTestActivity extends AppCompatActivity {
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         db.collection("users")
                                 .document(user.getUid())
-                                .update("burnoutLevel", 3)
-                                .addOnSuccessListener(aVoid -> {
-                                    Intent intent2 = new Intent(getApplicationContext(), AdditionalInfoActivity.class);
-                                    startActivity(intent2);
-                                });
+                                .update("burnoutLevel", 3);
+
+                        // 👇 Save advanced test data
+                        Map<String, Object> advancedTestData = new HashMap<>();
+                        advancedTestData.put("emoExhaust", emoExhaust);
+                        advancedTestData.put("dePerson", dePerson);
+                        advancedTestData.put("personalAch", personalAch);
+                        advancedTestData.put("result", result);
+                        db.collection("users")
+                                .document(user.getUid())
+                                .update("advancedTest", advancedTestData);
+
+                        Intent intent2 = new Intent(getApplicationContext(), AdditionalInfoActivity.class);
+                        startActivity(intent2);
                     }
                 }
             });
+
 
         } else {
             result = "ต่ำ";
             resultcolor = Color.GREEN;
-            btnNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    if (user != null) {
-                        FirebaseFirestore db = FirebaseFirestore.getInstance();
-                        db.collection("users")
-                                .document(user.getUid())
-                                .update("burnoutLevel", 2)
-                                .addOnSuccessListener(aVoid -> {
-                                    Intent intent2 = new Intent(getApplicationContext(), TipsActivity.class);
-                                    startActivity(intent2);
-                                });
-                    }
+            btnNext.setOnClickListener(v -> {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                    Map<String, Object> advancedTestData = new HashMap<>();
+                    advancedTestData.put("emoExhaust", emoExhaust);
+                    advancedTestData.put("dePerson", dePerson);
+                    advancedTestData.put("personalAch", personalAch);
+                    advancedTestData.put("result", result); // "สูง" or "ต่ำ"
+
+                    db.collection("users")
+                            .document(user.getUid())
+                            .update(
+                                    "burnoutLevel", 3,
+                                    "advancedTest", advancedTestData
+                            )
+                            .addOnSuccessListener(aVoid -> {
+                                Intent intent2 = new Intent(getApplicationContext(), AdditionalInfoActivity.class);
+                                startActivity(intent2);
+                            });
                 }
             });
-
         }
 
         String detailbyExhaust = "คะแนนความอ่อนล้าทางอารมณ์ : " + emoExhaust;

@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -19,6 +23,33 @@ public class MenuActivity extends AppCompatActivity {
         Button burnoutTestButton = findViewById(R.id.burnout_test_button);
         Button moodTrackerAddButton = findViewById(R.id.mood_tracker_add_button);
         Button moodCalendarButton = findViewById(R.id.mood_calendar_button);
+        Button viewAdvancedResultsButton = findViewById(R.id.view_advanced_results_button);
+
+        viewAdvancedResultsButton.setEnabled(false);
+        viewAdvancedResultsButton.setAlpha(0.5f);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null) {
+            String uid = auth.getCurrentUser().getUid();
+            db.collection("users").document(uid).get()
+                    .addOnSuccessListener(document -> {
+                        if (document.exists() && document.contains("advancedTest")) {
+                            // Enable button if advanced test exists
+                            viewAdvancedResultsButton.setEnabled(true);
+                            viewAdvancedResultsButton.setAlpha(1.0f);
+
+                            viewAdvancedResultsButton.setOnClickListener(v -> {
+                                Intent intent = new Intent(MenuActivity.this, AdditionalInfoActivity.class);
+                                startActivity(intent);
+                            });
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, "โหลดข้อมูลไม่สำเร็จ", Toast.LENGTH_SHORT).show();
+                    });
+        }
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override

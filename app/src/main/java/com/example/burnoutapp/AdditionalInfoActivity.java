@@ -8,60 +8,73 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Map;
 
 public class AdditionalInfoActivity extends AppCompatActivity {
 
-    private EditText originOfProblemEditText;
-    private EditText mainProblemEditText;
-    private EditText environmentEditText;
-    private Button submitButton;
-    private Button backButton;
+    FirebaseFirestore db;
+    FirebaseAuth auth;
+
+    TextView userInfoText, basicTestText, advanceTestText, burnoutLevelText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_additional_info);
 
-        originOfProblemEditText = findViewById(R.id.originOfProblemEditText);
-        mainProblemEditText = findViewById(R.id.mainProblemEditText);
-        environmentEditText = findViewById(R.id.environmentEditText);
-        submitButton = findViewById(R.id.submitButton);
-        backButton = findViewById(R.id.backButton);
+        db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (TextUtils.isEmpty(originOfProblemEditText.getText())) {
-                    originOfProblemEditText.setError("โปรดระบุจุดกำเนิดปัญหา");
-                    return;
-                }
+        userInfoText = findViewById(R.id.text_user_info);
+        advanceTestText = findViewById(R.id.text_advance_test_result);
+        burnoutLevelText = findViewById(R.id.text_burnout_level);
 
-                if (TextUtils.isEmpty(mainProblemEditText.getText())) {
-                    mainProblemEditText.setError("โปรดระบุปัญหาหลัก");
-                    return;
-                }
+        loadUserReport();
+    }
 
-                if (TextUtils.isEmpty(environmentEditText.getText())) {
-                    environmentEditText.setError("โปรดระบุสิ่งแวดล้อม");
-                    return;
-                }
+    private void loadUserReport() {
+        String uid = auth.getCurrentUser().getUid();
 
-                // If all fields are filled, you can proceed with your data submission logic here
-                String origin = originOfProblemEditText.getText().toString();
-                String mainProblem = mainProblemEditText.getText().toString();
-                String environment = environmentEditText.getText().toString();
+        db.collection("users").document(uid).get()
+                .addOnSuccessListener(document -> {
+                    if (document.exists()) {
+                        String name = document.getString("name");
+                        String birthdate = document.getString("birthdate");
+                        String gender = document.getString("gender");
+                        Long burnoutLevel = document.getLong("burnoutLevel");
 
-                Toast.makeText(AdditionalInfoActivity.this, "ข้อมูลถูกส่งแล้ว!", Toast.LENGTH_SHORT).show();
-            }
-        });
+                        Map<String, Object> basicTest = (Map<String, Object>) document.get("basicTest");
+                        Map<String, Object> advancedTest = (Map<String, Object>) document.get("advancedTest");
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Implement your back button functionality here
-                Toast.makeText(AdditionalInfoActivity.this, "ย้อนกลับ", Toast.LENGTH_SHORT).show(); // Go back
-            }
-        });
+                        // Set user info
+                        String userInfo = "ชื่อ: " + name + "\nวันเกิด: " + birthdate + "\nเพศ: " + gender;
+                        userInfoText.setText(userInfo);
+
+                        if (basicTest != null) {
+                            String basicResult = "ผลแบบทดสอบเบื้องต้น: " + basicTest.get("result") +
+                                    " (" + basicTest.get("score") + " คะแนน)";
+                            basicTestText.setText(basicResult);
+                        }
+
+                        if (advancedTest != null) {
+                            String advanceResult = "อารมณ์เหนื่อยล้า: " + advancedTest.get("emoExhaust") +
+                                    "\nลดความเป็นบุคคล: " + advancedTest.get("dePerson") +
+                                    "\nความสำเร็จส่วนตัว: " + advancedTest.get("personalAch") +
+                                    "\nรวม: " + advancedTest.get("result");
+                            advanceTestText.setText(advanceResult);
+                        }
+
+                        burnoutLevelText.setText("ระดับ Burnout (1-3): " + burnoutLevel);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "เกิดข้อผิดพลาดในการโหลดข้อมูล", Toast.LENGTH_SHORT).show();
+                });
     }
 }
