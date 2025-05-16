@@ -22,8 +22,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -128,29 +131,36 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
                                     Log.d("RegisterActivity", "createUserWithEmail:success");
-                                    // Save data to Shared Preferences [maybe rewrite!!!!!]
-                                    SharedPreferences sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString("name", name);
-                                    editor.putString("birthday", editTextBirthday.getText().toString().trim());
-                                    editor.putString("gender", finalGender);
-                                    editor.putString("sleepTime", finalSleepTime);
-                                    editor.putString("exerciseFrequency", finalExerciseFrequency);
-                                    editor.putFloat("stressLevel", stressLevel);
-                                    editor.apply(); // Use apply() for asynchronous saving
-                                    Toast.makeText(RegisterActivity.this, "บัญชีผู้ใช้ถูกสร้างเรียบร้อย", Toast.LENGTH_SHORT).show();
 
-                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Log.w("RegisterActivity", "createUserWithEmail:failure", task.getException());
-                                    Toast.makeText(RegisterActivity.this, "การสร้างบัญชีผู้ใช้ล้มเหลว.",
-                                            Toast.LENGTH_SHORT).show();
+                                    String uid = mAuth.getCurrentUser().getUid();
+
+                                    // Build user data
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    userMap.put("name", name);
+                                    userMap.put("birthday", editTextBirthday.getText().toString().trim());
+                                    userMap.put("gender", finalGender);
+                                    userMap.put("sleepTime", finalSleepTime);
+                                    userMap.put("exerciseFrequency", finalExerciseFrequency);
+                                    userMap.put("stressLevel", stressLevel);
+
+                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                                    db.collection("users").document(uid)
+                                            .set(userMap)
+                                            .addOnSuccessListener(aVoid -> {
+                                                Toast.makeText(RegisterActivity.this, "บัญชีผู้ใช้ถูกสร้างเรียบร้อย", Toast.LENGTH_SHORT).show();
+                                                // Navigate to LoginActivity
+                                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                Log.e("RegisterActivity", "Firestore save failed", e);
+                                                Toast.makeText(RegisterActivity.this, "บันทึกข้อมูลล้มเหลว", Toast.LENGTH_SHORT).show();
+                                            });
                                 }
+
                             }
                         });
             }

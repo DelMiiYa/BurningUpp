@@ -95,22 +95,22 @@
                 android:src="@drawable/ic_fire_off" />
         </LinearLayout>
 
-        <!-- Progress Label -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ความก้าวหน้า"
-            android:background="#0D2A56"
-            android:textColor="@android:color/white"
-            android:textAlignment="center"
-            android:padding="8dp"
-            android:layout_marginTop="8dp" />
+<!--        &lt;!&ndash; Progress Label &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="ความก้าวหน้า"-->
+<!--            android:background="#0D2A56"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textAlignment="center"-->
+<!--            android:padding="8dp"-->
+<!--            android:layout_marginTop="8dp" />-->
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/bar_chart"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="8dp" />
+<!--        <com.github.mikephil.charting.charts.BarChart-->
+<!--            android:id="@+id/bar_chart"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="250dp"-->
+<!--            android:layout_marginTop="8dp" />-->
 
         <!-- Mood Label -->
         <TextView
