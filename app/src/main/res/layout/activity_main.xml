@@ -27,13 +27,24 @@
         android:textSize="34sp" />
 
     <Button
-        android:id="@+id/start_button"
-        android:layout_width="190dp"
-        android:layout_height="70dp"
+        android:id="@+id/buttonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/havelockblue"
-        android:paddingHorizontal="48dp"
-        android:text="@string/start"
+        android:paddingVertical="16dp"
+        android:text="@string/sign_in_button"
         android:textColor="@android:color/white"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/buttonSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/white"
+        android:paddingVertical="16dp"
+        android:text="@string/sign_up_button"
+        android:textColor="#0277BD"
+        android:textSize="18sp" />
 
 </LinearLayout>

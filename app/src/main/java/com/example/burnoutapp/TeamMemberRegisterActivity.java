@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.util.Log;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,7 +27,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterActivity extends AppCompatActivity {
+public class TeamMemberRegisterActivity extends AppCompatActivity {
 
     private EditText editTextName, editTextBirthday, editTextEmail, editTextPassword;
     private FirebaseAuth mAuth;
@@ -64,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        RegisterActivity.this, R.style.CustomDatePickerDialog,
+                        TeamMemberRegisterActivity.this, R.style.CustomDatePickerDialog,
                         (view, selectedYear, selectedMonth, selectedDay) -> {
                             String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
                             editTextBirthday.setText(selectedDate);
@@ -111,15 +110,15 @@ public class RegisterActivity extends AppCompatActivity {
 
                 // Check if email and password are not empty
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    Toast.makeText(RegisterActivity.this, "กรุณากรอกอีเมลและรหัสผ่าน", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TeamMemberRegisterActivity.this, "กรุณากรอกอีเมลและรหัสผ่าน", Toast.LENGTH_SHORT).show();
                     return; // Stop further execution if email or password is empty
                 }
                 if (TextUtils.isEmpty(name)) {
-                    Toast.makeText(RegisterActivity.this, "กรุณากรอกชื่อ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TeamMemberRegisterActivity.this, "กรุณากรอกชื่อ", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(editTextBirthday.getText().toString().trim())) {
-                    Toast.makeText(RegisterActivity.this, "กรุณาเลือกวันเกิด", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TeamMemberRegisterActivity.this, "กรุณาเลือกวันเกิด", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -127,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String finalSleepTime = sleepTime;
                 String finalExerciseFrequency = exerciseFrequency;
                 mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(TeamMemberRegisterActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
@@ -149,15 +148,15 @@ public class RegisterActivity extends AppCompatActivity {
                                     db.collection("users").document(uid)
                                             .set(userMap)
                                             .addOnSuccessListener(aVoid -> {
-                                                Toast.makeText(RegisterActivity.this, "บัญชีผู้ใช้ถูกสร้างเรียบร้อย", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(TeamMemberRegisterActivity.this, "บัญชีผู้ใช้ถูกสร้างเรียบร้อย", Toast.LENGTH_SHORT).show();
                                                 // Navigate to LoginActivity
-                                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                                Intent intent = new Intent(TeamMemberRegisterActivity.this, LoginActivity.class);
                                                 startActivity(intent);
                                                 finish();
                                             })
                                             .addOnFailureListener(e -> {
                                                 Log.e("RegisterActivity", "Firestore save failed", e);
-                                                Toast.makeText(RegisterActivity.this, "บันทึกข้อมูลล้มเหลว", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(TeamMemberRegisterActivity.this, "บันทึกข้อมูลล้มเหลว", Toast.LENGTH_SHORT).show();
                                             });
                                 }
 

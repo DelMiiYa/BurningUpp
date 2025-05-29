@@ -13,6 +13,12 @@
         android:theme="@style/Theme.JavaAintShit"
         tools:targetApi="31">
         <activity
+            android:name=".TeamManagerRegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChooseRoleActivity"
+            android:exported="false" />
+        <activity
             android:name=".ResultOfAdvanceTestActivity"
             android:exported="false" />
         <activity
@@ -43,7 +49,7 @@
             android:name=".TipsActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".TeamMemberRegisterActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

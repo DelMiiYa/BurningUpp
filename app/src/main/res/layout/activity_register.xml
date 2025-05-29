@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/hawkesblue"
     android:padding="32dp"
-    tools:context=".RegisterActivity">
+    tools:context=".TeamMemberRegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

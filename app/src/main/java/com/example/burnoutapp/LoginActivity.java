@@ -3,7 +3,6 @@ package com.example.burnoutapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -33,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         signInButton = findViewById(R.id.buttonSignIn);
-        signUpButton = findViewById(R.id.buttonSignUp);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -66,22 +64,5 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                    startActivity(intent);
-                }
-            });
-
-//        signUpButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // go go Register
-//                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 }

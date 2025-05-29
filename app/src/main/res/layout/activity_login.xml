@@ -60,14 +60,4 @@
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/buttonSignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/white"
-        android:paddingVertical="16dp"
-        android:text="@string/sign_up_button"
-        android:textColor="#0277BD"
-        android:textSize="18sp" />
-
 </LinearLayout>

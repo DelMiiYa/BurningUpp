@@ -11,26 +11,31 @@ import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button signInButton;
+    private Button signUpButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FirebaseApp.initializeApp(this);
-        Button startButton = findViewById(R.id.start_button);
-        startButton.setOnClickListener(new View.OnClickListener() {
+        signInButton = findViewById(R.id.buttonLogin);
+        signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // add Intent for open LoginActivity
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
-//            //======================= test mang ===================//
-//            public void onClick(View v) {
-//                // add Intent for open tipsActivity
-//                Intent intent = new Intent(MainActivity.this, TipsActivity.class);
-//                startActivity(intent);
-//            }
-//            //====================================================//
+        });
+        signUpButton = findViewById(R.id.buttonSignUp);
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // add Intent for open RegisterActivity
+                Intent intent = new Intent(MainActivity.this, TeamMemberRegisterActivity.class);
+                startActivity(intent);
+            }
         });
     }
 }
