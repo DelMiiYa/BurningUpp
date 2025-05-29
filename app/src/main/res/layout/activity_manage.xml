@@ -45,15 +45,16 @@
                     <TableRow>
 
                         <TextView
-                            android:minWidth="100dp"
-                            android:padding="8dp"
-                            android:text="@string/testnamecolum"
+                            android:minWidth="100sp"
+                            android:padding="8sp"
+                            android:text="@string/colum1"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:minWidth="100dp"
-                            android:padding="8dp"
-                            android:text="@string/testnamecolum"
+                            android:textAlignment="viewEnd"
+                            android:minWidth="50sp"
+                            android:padding="8sp"
+                            android:text="@string/colum2"
                             android:textStyle="bold" />
                     </TableRow>
 
