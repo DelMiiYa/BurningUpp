@@ -13,11 +13,9 @@
     <string name="nextassment">ทำแบบทดสอบที่ 2</string>
     <string name="nextassment2222">ทำแบบทดสอบที่ 2\nทำแบบทดสอบที่ 2\nทำแบบทดสอบที่ 2</string>
     <string name="markicon">*</string>
-
-
-
-
-
+    <string name="whoru">คุณคือใครในองค์กรนี้?</string>
+    <string name="Hr">ฝ่ายบริหารทรัพยากรบุคคล</string>
+    <string name="employee">พนักงานตำแหน่งอื่นในองค์กร</string>
 
     <string name="assmentp2_2">แบบทดสอบที่ 2 :</string>
     <string name="assmentp3">ประเมิน Burnout</string>
