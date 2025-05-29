@@ -13,7 +13,7 @@
         android:theme="@style/Theme.JavaAintShit"
         tools:targetApi="31">
         <activity
-            android:name=".somthing1"
+            android:name=".RoleSelectionActivity"
             android:exported="false" />
         <activity
             android:name=".ResultOfAdvanceTestActivity"
