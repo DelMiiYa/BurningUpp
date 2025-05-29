@@ -55,7 +55,7 @@ public class AdditionalInfoActivity extends AppCompatActivity {
                 .addOnSuccessListener(document -> {
                     if (document.exists()) {
                         String name = document.getString("name");
-                        String birthdate = document.getString("birthdate");
+                        String birthdate = document.getString("birthday");
                         String gender = document.getString("gender");
                         Long burnoutLevel = document.getLong("burnoutLevel");
 
