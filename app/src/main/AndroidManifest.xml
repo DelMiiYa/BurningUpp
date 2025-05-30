@@ -52,7 +52,7 @@
             android:name=".TipsActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".TeamMemberRegisterActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
