@@ -19,6 +19,9 @@
             android:name=".ChooseRoleActivity"
             android:exported="false" />
         <activity
+            android:name=".ManageActivity"
+            android:exported="false" />
+        <activity
             android:name=".ResultOfAdvanceTestActivity"
             android:exported="false" />
         <activity
@@ -49,7 +52,7 @@
             android:name=".TipsActivity"
             android:exported="false" />
         <activity
-            android:name=".TeamMemberRegisterActivity"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

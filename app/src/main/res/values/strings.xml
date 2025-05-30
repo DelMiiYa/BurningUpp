@@ -13,6 +13,11 @@
     <string name="nextassment">ทำแบบทดสอบที่ 2</string>
     <string name="nextassment2222">ทำแบบทดสอบที่ 2\nทำแบบทดสอบที่ 2\nทำแบบทดสอบที่ 2</string>
     <string name="markicon">*</string>
+    <string name="btngenCode">Default Code</string>
+    <string name="colum1">Name</string>
+    <string name="colum2">Burnout Level</string>
+
+
 
 
     <string name="assmentp2_2">แบบทดสอบที่ 2 :</string>
