@@ -5,7 +5,7 @@
         <item name="fontFamily">@font/notosansthaifont</item>
 <!--        <item name="colorPrimary">@color/hawkesblue</item>-->
         <item name="android:textColor">@color/metallicBlue</item>
-        <!-- <item name="colorPrimary">@color/havelockblue</item> -->
+        <item name="buttonStyle">@style/DefaultButtonStyle</item>
     </style>
 
     <style name="NeutralButtonStyle" parent="Widget.Material3.Button">
@@ -14,6 +14,9 @@
         <item name="android:background">@drawable/main_menu_button</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
-
+    <style name="DefaultButtonStyle" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/havelockblue</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
     <style name="Theme.JavaAintShit" parent="Base.Theme.JavaAintShit" />
 </resources>

@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,7 +44,7 @@ public class TeamMemberRegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_team_member_register);
 
         mAuth = FirebaseAuth.getInstance();
         editTextName = findViewById(R.id.editTextName);
@@ -53,7 +57,7 @@ public class TeamMemberRegisterActivity extends AppCompatActivity {
         ratingBarStress = findViewById(R.id.ratingBarStress);
         buttonCreateAccount = findViewById(R.id.buttonCreateAccount);
         textViewAlreadyAccount = findViewById(R.id.textViewAlreadyAccount);
-
+        setupLoginLink();
         editTextBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,13 +168,22 @@ public class TeamMemberRegisterActivity extends AppCompatActivity {
                         });
             }
         });
+    }
+    private void setupLoginLink() {
+        String text = "มีบัญชีอยู่แล้ว? เข้าสู่ระบบ";
+        SpannableString ss = new SpannableString(text);
 
-        //Set Listener to TextView "Already have account? Log in"
-        textViewAlreadyAccount.setOnClickListener(new View.OnClickListener() {
+        ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View v) {
+            public void onClick(@NonNull View widget) {
+                startActivity(new Intent(TeamMemberRegisterActivity.this, LoginActivity.class));
                 finish();
             }
-        });
+        };
+
+        ss.setSpan(clickableSpan, text.indexOf("เข้าสู่ระบบ"), text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textViewAlreadyAccount.setText(ss);
+        textViewAlreadyAccount.setMovementMethod(LinkMovementMethod.getInstance());
+        textViewAlreadyAccount.setHighlightColor(getResources().getColor(android.R.color.transparent));
     }
 }

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // add Intent for open RegisterActivity
-                Intent intent = new Intent(MainActivity.this, TeamMemberRegisterActivity.class);
+                Intent intent = new Intent(MainActivity.this, ChooseRoleActivity.class);
                 startActivity(intent);
             }
         });

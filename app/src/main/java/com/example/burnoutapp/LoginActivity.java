@@ -1,14 +1,20 @@
 package com.example.burnoutapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextPassword;
     private Button signInButton;
     private Button signUpButton;
-
+    private TextView textViewAlreadyAccount;
     private FirebaseAuth mAuth;
 
     @Override
@@ -32,9 +38,10 @@ public class LoginActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         signInButton = findViewById(R.id.buttonSignIn);
+        textViewAlreadyAccount = findViewById(R.id.textViewAlreadyAccount);
 
         mAuth = FirebaseAuth.getInstance();
-
+        setupLoginLink();
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,5 +71,22 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    private void setupLoginLink() {
+        String text = "ยังไม่มีบัญชี? ลงชื่อเข้าใช้";
+        SpannableString ss = new SpannableString(text);
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                startActivity(new Intent(LoginActivity.this, ChooseRoleActivity.class));
+                finish();
+            }
+        };
+
+        ss.setSpan(clickableSpan, text.indexOf("ลงชื่อเข้าใช้"), text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textViewAlreadyAccount.setText(ss);
+        textViewAlreadyAccount.setMovementMethod(LinkMovementMethod.getInstance());
+        textViewAlreadyAccount.setHighlightColor(getResources().getColor(android.R.color.transparent));
     }
 }

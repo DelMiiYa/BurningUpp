@@ -20,14 +20,13 @@
             android:layout_marginTop="32dp"
             android:layout_marginBottom="24dp"
             android:contentDescription="@string/app_logo"
-            android:src="@drawable/logoapp" />
+            android:src="@drawable/ic_launcher" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
-            android:text="@string/register_title"
-            android:textColor="@android:color/black"
+            android:text="ลงทะเบียนสมาชิกทีม"
             android:textSize="24sp" />
 
         <EditText
@@ -39,183 +38,6 @@
             android:hint="@string/name_hint"
             android:inputType="textPersonName"
             android:padding="12dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/editTextBirthday"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@android:color/white"
-                android:hint="@string/birthday_hint_register"
-                android:focusable="false"
-                android:clickable="true"
-                android:padding="12dp"
-                android:inputType="none" />
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginBottom="8dp"
-            android:text="@string/gender"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <RadioGroup
-            android:id="@+id/radioGroupGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/radioButtonMale"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/male"
-                android:textColor="@android:color/black" />
-
-            <RadioButton
-                android:id="@+id/radioButtonFemale"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/female"
-                android:textColor="@android:color/black" />
-
-            <RadioButton
-                android:id="@+id/radioButtonOther"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/other_gender"
-                android:textColor="@android:color/black" />
-
-        </RadioGroup>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginBottom="8dp"
-            android:text="@string/sleep_time"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <RadioGroup
-            android:id="@+id/radioGroupSleepTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
-
-            <RadioButton
-                android:id="@+id/radioButtonSleep1_3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/sleep_1_3"
-                android:textColor="@android:color/black" />
-
-            <RadioButton
-                android:id="@+id/radioButtonSleep4_6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/sleep_4_6"
-                android:textColor="@android:color/black" />
-
-            <RadioButton
-                android:id="@+id/radioButtonSleep8_10"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/sleep_8_10"
-                android:textColor="@android:color/black" />
-
-            <RadioButton
-                android:id="@+id/radioButtonSleepOver12"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/sleep_over_12"
-                android:textColor="@android:color/black" />
-
-        </RadioGroup>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginBottom="8dp"
-            android:text="@string/exercise"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-
-        <RadioGroup
-            android:id="@+id/radioGroupExercise"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="16dp">
-
-            <RadioButton
-                android:id="@+id/radioButtonExercise0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/exercise_0"
-                android:textColor="@android:color/black" />
-
-            <RadioButton
-                android:id="@+id/radioButtonExercise1_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/exercise_1_2"
-                android:textColor="@android:color/black" />
-
-            <RadioButton
-                android:id="@+id/radioButtonExercise3_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/exercise_3_4"
-                android:textColor="@android:color/black" />
-
-            <RadioButton
-                android:id="@+id/radioButtonExerciseMore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/exercise_more"
-                android:textColor="@android:color/black" />
-
-        </RadioGroup>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginBottom="8dp"
-            android:text="@string/stress_level"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <RatingBar
-            android:id="@+id/ratingBarStress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:numStars="5"
-            android:stepSize="1" />
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -236,6 +58,173 @@
             android:hint="@string/password_hint"
             android:inputType="textPassword"
             android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/editTextBirthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/white"
+            android:hint="@string/birthday_hint_register"
+            android:focusable="false"
+            android:clickable="true"
+            android:padding="12dp"
+            android:inputType="none" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginBottom="8dp"
+            android:text="@string/gender"
+            android:textSize="16sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButtonMale"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/male"
+                android:textColor="@color/metallicBlue" />
+
+            <RadioButton
+                android:id="@+id/radioButtonFemale"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/female"
+                android:textColor="@color/metallicBlue" />
+
+            <RadioButton
+                android:id="@+id/radioButtonOther"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/other_gender"
+                android:textColor="@color/metallicBlue" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginBottom="8dp"
+            android:text="@string/sleep_time"
+            android:textColor="@color/metallicBlue"
+            android:textSize="16sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupSleepTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <RadioButton
+                android:id="@+id/radioButtonSleep1_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sleep_1_3"
+                android:textColor="@color/metallicBlue" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSleep4_6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sleep_4_6"
+                android:textColor="@color/metallicBlue" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSleep8_10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sleep_8_10"
+                android:textColor="@color/metallicBlue" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSleepOver12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sleep_over_12"
+                android:textColor="@color/metallicBlue" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginBottom="8dp"
+            android:text="@string/exercise"
+            android:textColor="@color/metallicBlue"
+            android:textSize="16sp" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroupExercise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <RadioButton
+                android:id="@+id/radioButtonExercise0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exercise_0"
+                android:textColor="@color/metallicBlue" />
+
+            <RadioButton
+                android:id="@+id/radioButtonExercise1_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exercise_1_2"
+                android:textColor="@color/metallicBlue" />
+
+            <RadioButton
+                android:id="@+id/radioButtonExercise3_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exercise_3_4"
+                android:textColor="@color/metallicBlue" />
+
+            <RadioButton
+                android:id="@+id/radioButtonExerciseMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exercise_more"
+                android:textColor="@color/metallicBlue" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginBottom="8dp"
+            android:text="@string/stress_level"
+            android:textColor="@color/metallicBlue"
+            android:textSize="16sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBarStress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:numStars="5"
+            android:stepSize="1" />
 
         <Button
             android:id="@+id/buttonCreateAccount"
