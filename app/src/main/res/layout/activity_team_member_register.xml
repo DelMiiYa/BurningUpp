@@ -71,6 +71,17 @@
             android:padding="12dp"
             android:inputType="none" />
 
+        <EditText
+            android:id="@+id/editTextTeamCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/white"
+            android:hint="รหัสทีม"
+            android:inputType="text"
+            android:padding="12dp" />
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -222,7 +233,6 @@
             android:id="@+id/ratingBarStress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:numStars="5"
             android:stepSize="1" />
 
