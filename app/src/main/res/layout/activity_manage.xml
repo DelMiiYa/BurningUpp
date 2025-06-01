@@ -51,7 +51,6 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:textAlignment="viewEnd"
                             android:minWidth="50sp"
                             android:padding="8sp"
                             android:text="@string/colum2"
