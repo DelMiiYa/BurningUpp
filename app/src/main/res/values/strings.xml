@@ -6,9 +6,12 @@
     <string name="assmentp2">แบบทดสอบที่ 1 :</string>
     <string name="resultoftest">ผลการทำแบบทดสอบ</string>
     <string name="res101morespace">สรุปผล :\nคุณมีความเสี่ยงต่อ Burnout \n\n\n\n\n</string>
-    <string name="res101">\nสรุปผล :\nคุณมีความเสี่ยงต่อ Burnout \n\n</string>
-    <string name="lowriskresult">ต่ำ</string>
-    <string name="hightriskrusult">สูง</string>
+    <string name="res101">\nคุณทำแบบทดสอบ\nเสร็จสิ้น \n\n</string>
+    <string name="res101old">\nสรุปผล :\nคุณมีความเสี่ยงต่อ Burnout \n\n</string>
+    <string name="lowriskresult">ขอบคุณที่ทำแบบทดสอบ</string>
+    <string name="hightriskrusult">กรุณาทำแบบทดสอบที่ 2</string>
+    <string name="lowriskresultold">ต่ำ</string>
+    <string name="hightriskrusultold">สูง</string>
     <string name="btngonextpage">ถัดไป</string>
     <string name="nextassment">ทำแบบทดสอบที่ 2</string>
     <string name="nextassment2222">ทำแบบทดสอบที่ 2\nทำแบบทดสอบที่ 2\nทำแบบทดสอบที่ 2</string>
