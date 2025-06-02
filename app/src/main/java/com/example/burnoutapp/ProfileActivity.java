@@ -37,7 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         fetchUserProfile();
         fetchMoodData();
-        fetchAndDisplayBurnoutLevel();
+//        fetchAndDisplayBurnoutLevel();
     }
 
     private void initializeViews() {
@@ -111,29 +111,29 @@ public class ProfileActivity extends AppCompatActivity {
         pieChart.invalidate();
     }
 
-    private void fetchAndDisplayBurnoutLevel() {
-        String uid = getCurrentUserId();
-        if (uid == null) return;
+//    private void fetchAndDisplayBurnoutLevel() {
+//        String uid = getCurrentUserId();
+//        if (uid == null) return;
+//
+//        db.collection(USERS_COLLECTION).document(uid)
+//                .get()
+//                .addOnSuccessListener(doc -> {
+//                    if (doc.exists()) {
+//                        Long burnoutLevel = doc.getLong("burnoutLevel");
+//                        updateFireIcons(burnoutLevel != null ? burnoutLevel.intValue() : 0);
+//                    }
+//                })
+//                .addOnFailureListener(Throwable::printStackTrace);
+//    }
 
-        db.collection(USERS_COLLECTION).document(uid)
-                .get()
-                .addOnSuccessListener(doc -> {
-                    if (doc.exists()) {
-                        Long burnoutLevel = doc.getLong("burnoutLevel");
-                        updateFireIcons(burnoutLevel != null ? burnoutLevel.intValue() : 0);
-                    }
-                })
-                .addOnFailureListener(Throwable::printStackTrace);
-    }
-
-    private void updateFireIcons(int level) {
-        int[] fireIds = {R.id.fire1, R.id.fire2, R.id.fire3};
-
-        for (int i = 0; i < fireIds.length; i++) {
-            ImageView fire = findViewById(fireIds[i]);
-            fire.setImageResource(level > i ? R.drawable.ic_fire_on : R.drawable.ic_fire_off);
-        }
-    }
+//    private void updateFireIcons(int level) {
+//        int[] fireIds = {R.id.fire1, R.id.fire2, R.id.fire3};
+//
+//        for (int i = 0; i < fireIds.length; i++) {
+//            ImageView fire = findViewById(fireIds[i]);
+//            fire.setImageResource(level > i ? R.drawable.ic_fire_on : R.drawable.ic_fire_off);
+//        }
+//    }
 
     private String getCurrentUserId() {
         if (mAuth.getCurrentUser() == null) {

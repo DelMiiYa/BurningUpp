@@ -67,21 +67,21 @@
             android:textColor="@color/metallicBlue"
             android:drawableLeft="@drawable/baseline_calendar_month_24"
             android:textSize="24sp" />
-        <Button
-            android:id="@+id/view_advanced_results_button"
-            style="@style/NeutralButtonStyle"
-            android:layout_width="300dp"
-            android:layout_height="70dp"
-            android:layout_marginBottom="32dp"
-            android:background="@drawable/main_menu_button"
-            android:backgroundTint="@null"
-            android:paddingHorizontal="48dp"
-            android:text="ดูผลแบบละเอียด"
-            android:textColor="@color/metallicBlue"
-            android:textSize="24sp"
-            android:enabled="false"
-            android:alpha="0.5"
-            android:drawableLeft="@drawable/baseline_description_24" />
+<!--        <Button-->
+<!--            android:id="@+id/view_advanced_results_button"-->
+<!--            style="@style/NeutralButtonStyle"-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_marginBottom="32dp"-->
+<!--            android:background="@drawable/main_menu_button"-->
+<!--            android:backgroundTint="@null"-->
+<!--            android:paddingHorizontal="48dp"-->
+<!--            android:text="ดูผลแบบละเอียด"-->
+<!--            android:textColor="@color/metallicBlue"-->
+<!--            android:textSize="24sp"-->
+<!--            android:enabled="false"-->
+<!--            android:alpha="0.5"-->
+<!--            android:drawableLeft="@drawable/baseline_description_24" />-->
 
     </LinearLayout>
 
