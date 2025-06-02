@@ -60,7 +60,7 @@ public class ResultOfBasicTestActivity extends AppCompatActivity {
                                 .update("burnoutLevel", 1)
                                 .addOnSuccessListener(aVoid -> {
                                     // open tips screen
-                                    Intent intent2 = new Intent(getApplicationContext(), TipsActivity.class);
+                                    Intent intent2 = new Intent(getApplicationContext(), MenuActivity.class);
                                     startActivity(intent2);
                                 });
                     }
