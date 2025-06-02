@@ -5,7 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+//import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,13 +33,13 @@ public class ResultOfAdvanceTestActivity extends AppCompatActivity {
             return insets;
         });
 
-        TextView resultofresult = findViewById(R.id.resultofresult);
-        TextView txtResult1 = findViewById(R.id.txt_result_21);
-        TextView txtResult2 = findViewById(R.id.txt_result_22);
-        TextView txtResult3 = findViewById(R.id.txt_result_23);
-        TextView markresult1 = findViewById(R.id.markresult_21);
-        TextView markresult2 = findViewById(R.id.markresult_22);
-        TextView markresult3 = findViewById(R.id.markresult_23);
+//        TextView resultofresult = findViewById(R.id.resultofresult);
+//        TextView txtResult1 = findViewById(R.id.txt_result_21);
+//        TextView txtResult2 = findViewById(R.id.txt_result_22);
+//        TextView txtResult3 = findViewById(R.id.txt_result_23);
+//        TextView markresult1 = findViewById(R.id.markresult_21);
+//        TextView markresult2 = findViewById(R.id.markresult_22);
+//        TextView markresult3 = findViewById(R.id.markresult_23);
 
         Button btnNext = findViewById(R.id.btn_next_2);
 
@@ -150,14 +150,14 @@ public class ResultOfAdvanceTestActivity extends AppCompatActivity {
         String detailbyPersonalAch = "คะแนนความสำเร็จส่วนบุคคล : " + personalAch;
 
 
-        resultofresult.setText(result);
-        resultofresult.setTextColor(resultcolor);
-        markresult1.setTextColor(resultbyExhaust);
-        txtResult1.setText(detailbyExhaust);
-        markresult2.setTextColor(resultbyDePerson);
-        txtResult2.setText(detailbyDePerson);
-        markresult3.setTextColor(resultbyPersonalAch);
-        txtResult3.setText(detailbyPersonalAch);
+//        resultofresult.setText(result);
+//        resultofresult.setTextColor(resultcolor);
+//        markresult1.setTextColor(resultbyExhaust);
+//        txtResult1.setText(detailbyExhaust);
+//        markresult2.setTextColor(resultbyDePerson);
+//        txtResult2.setText(detailbyDePerson);
+//        markresult3.setTextColor(resultbyPersonalAch);
+//        txtResult3.setText(detailbyPersonalAch);
 
     }
 }
