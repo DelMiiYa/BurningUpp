@@ -1,34 +1,29 @@
 package com.example.burnoutapp;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.common.collect.Table;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ManageActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private TextView textViewCode;
-    private TableLayout tableLayout;
+    private RecyclerView recyclerView;
+    private UserAdapter userAdapter;
+    private final List<UserModel> userList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +31,15 @@ public class ManageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manage);
 
         textViewCode = findViewById(R.id.textView_Code);
-        tableLayout = findViewById(R.id.data_table);
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        userAdapter = new UserAdapter(userList, this);
+        recyclerView.setAdapter(userAdapter);
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
         String currentUserId = mAuth.getCurrentUser().getUid();
-//        Log.d(TAG, "Current user ID: " + currentUserId);
 
         db.collection("teams")
                 .whereEqualTo("managerId", currentUserId)
@@ -52,21 +49,14 @@ public class ManageActivity extends AppCompatActivity {
                         DocumentSnapshot teamDoc = queryDocumentSnapshots.getDocuments().get(0);
                         String teamCode = teamDoc.getId();
                         textViewCode.setText("Team Code: " + teamCode);
-//                        Log.d(TAG, "Team found: " + teamCode);
 
                         List<String> memberIds = (List<String>) teamDoc.get("members");
-
                         if (memberIds != null && !memberIds.isEmpty()) {
-//                            Log.d(TAG, "Found " + memberIds.size() + " members.");
                             fetchAndDisplayMembers(memberIds);
-                        } else {
-//                            Log.d(TAG, "No members found in the team.");
                         }
-                    } else {
-//                        Log.d(TAG, "No team found for this manager.");
                     }
                 })
-                .addOnFailureListener(e -> Log.e(TAG, "Failed to fetch team: ", e));
+                .addOnFailureListener(e -> Log.e("ManageActivity", "Failed to fetch team: ", e));
     }
 
     private void fetchAndDisplayMembers(List<String> memberIds) {
@@ -77,32 +67,24 @@ public class ManageActivity extends AppCompatActivity {
                     .addOnSuccessListener(documentSnapshot -> {
                         if (documentSnapshot.exists()) {
                             String name = documentSnapshot.getString("name");
-                            Long burnoutLevel = documentSnapshot.getLong("burnoutLevel");
+                            String birthday = documentSnapshot.getString("birthday");
+                            String gender = documentSnapshot.getString("gender");
+                            Long burnout = documentSnapshot.getLong("burnoutLevel");
 
-//                            Log.d(TAG, "Fetched user " + memberId + ": name=" + name + ", burnout=" + burnoutLevel);
-                            addTableRow(name != null ? name : "Unnamed", burnoutLevel != null ? String.valueOf(burnoutLevel) : "N/A");
-                        } else {
-//                            Log.d(TAG, "User not found: " + memberId);
+                            Map<String, Object> basicTest = (Map<String, Object>) documentSnapshot.get("basicTest");
+                            Map<String, Object> advancedTest = (Map<String, Object>) documentSnapshot.get("advancedTest");
+
+                            userList.add(new UserModel(
+                                    name != null ? name : "Unnamed",
+                                    birthday,
+                                    gender,
+                                    burnout != null ? burnout.intValue() : null,
+                                    advancedTest
+                            ));
+                            userAdapter.notifyItemInserted(userList.size() - 1);
                         }
                     })
-                    .addOnFailureListener(e -> Log.e(TAG, "Failed to fetch user " + memberId, e));
+                    .addOnFailureListener(e -> Log.e("ManageActivity", "Failed to fetch user: " + memberId, e));
         }
-    }
-
-    private void addTableRow(String name, String burnoutLevel) {
-        TableRow row = new TableRow(this);
-
-        TextView nameView = new TextView(this);
-        nameView.setText(name);
-        nameView.setPadding(8, 8, 8, 8);
-
-        TextView burnoutView = new TextView(this);
-        burnoutView.setText(burnoutLevel);
-        burnoutView.setPadding(8, 8, 8, 8);
-
-        row.addView(nameView);
-        row.addView(burnoutView);
-
-        tableLayout.addView(row);
     }
 }
