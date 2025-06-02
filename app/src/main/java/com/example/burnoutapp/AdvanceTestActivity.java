@@ -1,6 +1,8 @@
 package com.example.burnoutapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -78,13 +80,20 @@ public class AdvanceTestActivity extends AppCompatActivity {
         for (int i = 0; i < questions.length; i++) {
             int index = i;
             TextView questionText = new TextView(this);
+            questionText.setTextSize(24);
+            questionText.setTypeface(null, Typeface.BOLD);
+            questionText.setTextColor(Color.BLACK);
             questionText.setText(questions[i]);
+            questionText.setPadding(0, 35, 0, 0);
             questionList.addView(questionText);
 
             RadioGroup radioGroup = new RadioGroup(this);
+            radioGroup.setPadding(20, 5, 0, 20);
             for (int j = 0; j < choices.length; j++) {
                 RadioButton rb = new RadioButton(this);
                 rb.setText(choices[j]);
+                rb.setTextSize(20);
+                rb.setTextColor(Color.BLACK);
                 radioGroup.addView(rb);
             }
             questionList.addView(radioGroup);

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_register_choice"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@color/hawkesblue">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="@string/app_logo"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_register_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/register_as"
+        android:textSize="24sp"
+        android:textStyle="bold"
+
+        android:layout_marginBottom="180dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_team_manager"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="@string/team_manager"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"
+        app:cornerRadius="12dp"
+        android:backgroundTint="@color/havelockblue"
+        android:textColor="@android:color/white"
+        app:icon="@drawable/baseline_manage_accounts_24"
+        app:iconPadding="8dp"
+        app:iconTint="@android:color/white" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_team_member"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="@string/team_member"
+        android:textSize="18sp"
+        app:cornerRadius="12dp"
+        android:backgroundTint="@color/havelockblue"
+        android:textColor="@android:color/white"
+        app:icon="@drawable/baseline_people_24"
+        app:iconPadding="8dp"
+        app:iconTint="@android:color/white" />
+
+</LinearLayout>

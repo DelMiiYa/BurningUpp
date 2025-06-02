@@ -35,7 +35,7 @@ public class ResultOfBasicTestActivity extends AppCompatActivity {
         int yesCount = getIntent().getIntExtra("yesCount", 0);
 
         if (yesCount >= 5) {
-            txtResult.setText("สูง");
+            txtResult.setText("กรุณาทำแบบทดสอบที่ 2");
             btnNext.setText("ทำแบบทดสอบที่ 2");
             btnNext.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -46,7 +46,7 @@ public class ResultOfBasicTestActivity extends AppCompatActivity {
                 }
             });
         } else {
-            txtResult.setText("ต่ำ");
+            txtResult.setText("ขอบคุณที่ทำแบบทดสอบ");
             btnNext.setText("ถัดไป");
             btnNext.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -60,7 +60,7 @@ public class ResultOfBasicTestActivity extends AppCompatActivity {
                                 .update("burnoutLevel", 1)
                                 .addOnSuccessListener(aVoid -> {
                                     // open tips screen
-                                    Intent intent2 = new Intent(getApplicationContext(), TipsActivity.class);
+                                    Intent intent2 = new Intent(getApplicationContext(), MenuActivity.class);
                                     startActivity(intent2);
                                 });
                     }
