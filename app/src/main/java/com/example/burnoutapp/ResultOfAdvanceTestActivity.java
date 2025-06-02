@@ -110,7 +110,7 @@ public class ResultOfAdvanceTestActivity extends AppCompatActivity {
                                 .document(user.getUid())
                                 .update("advancedTest", advancedTestData);
 
-                        Intent intent2 = new Intent(getApplicationContext(), AdditionalInfoActivity.class);
+                        Intent intent2 = new Intent(getApplicationContext(), MenuActivity.class);
                         startActivity(intent2);
                     }
                 }
@@ -138,7 +138,7 @@ public class ResultOfAdvanceTestActivity extends AppCompatActivity {
                                     "advancedTest", advancedTestData
                             )
                             .addOnSuccessListener(aVoid -> {
-                                Intent intent2 = new Intent(getApplicationContext(), AdditionalInfoActivity.class);
+                                Intent intent2 = new Intent(getApplicationContext(), MenuActivity.class);
                                 startActivity(intent2);
                             });
                 }
